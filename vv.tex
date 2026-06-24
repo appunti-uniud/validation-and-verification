@@ -3103,7 +3103,7 @@ Every OBDD with root $v$ defines a Boolean function $f_v(x_1, \dots, x_n)$ as fo
   \item if $v$ is a leaf, then $f_v(x_1,\dots,x_n) = \val(v)$;
   \item if $v$ is an internal node and $\text{var}(v) = x_i$, then
     \begin{equation*}
-      f_v(x_1,\dots,x_n) = \left( \neg x_i \land f_{\low(i)}(x_1,\dots,x_n) \right) \lor \left( x_i \land f_{\high(i)}(x_1,\dots,x_n) \right)
+      f_v(x_1,\dots,x_n) = \left( \neg x_i \land f_{\low(v)}(x_1,\dots,x_n) \right) \lor \left( x_i \land f_{\high(v)}(x_1,\dots,x_n) \right)
     \end{equation*}
     \ie, goes recursively in the value of the right/left child respectively if the variable $x_i$ is \true or not.
 \end{itemize}
