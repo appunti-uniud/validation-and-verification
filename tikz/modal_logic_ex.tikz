@@ -1,0 +1,10 @@
+\begin{tikzpicture}[auto, node distance=1.5cm, shorten >=2pt]
+  \node[state] (0) {$\emptyset$}; 
+  \node[state] (p1) [right=of 0] {$\set{p}$}; 
+  \node[state] (p2) [below=of 0] {$\set{p}$}; 
+  \node[state] (pq) [right=of p2] {$\{p,q\}$}; 
+  \path[->] 
+    (0) edge (p1)
+    (0) edge (p2)
+    (0) edge (pq);
+\end{tikzpicture}

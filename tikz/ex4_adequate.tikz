@@ -1,0 +1,22 @@
+\begin{tikzpicture}
+[
+  auto,
+  node distance=0.6cm,
+  shorten >=2pt,
+  state/.style={draw, rectangle, rounded corners=0.3cm, minimum width=1.8cm, minimum height=0.8cm}
+]
+
+  \node[state, initial, initial text=] (s0a7) {$(s_0, A_7)$};
+  \node[state, below=of s0a7] (s2a7) {$(s_2, A_7)$};
+
+  \path[->]
+    (s0a7) edge[loop above,distance=0.5cm] node {$\t_I$} (s0a7)
+    (s2a7) edge[loop below,distance=0.5cm] node {$\t_I$} (s2a7);
+
+  \path[->, red]
+    (s2a7.north east) edge[bend right=25] node[swap] {$\t_1$} (s0a7.south east);
+
+  \path[->, green]
+    (s0a7.south west) edge[bend right=25] node[swap] {$\t_2$} (s2a7.north west);
+
+\end{tikzpicture}

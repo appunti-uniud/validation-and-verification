@@ -1,0 +1,11 @@
+\begin{tikzpicture}[auto, node distance=1cm, shorten >=2pt]
+  \node[state,initial,initial text=,accepting] (q0) {$q_0$}; 
+  \node[state,accepting] (q1) [right=of q0] {$q_1$}; 
+  \node[state] (q2) [right=of q1] {$q_2$}; 
+  \path[->] 
+    (q0) edge [loop below] node {b,c} ()
+         edge node {a} (q1)
+    (q1) edge [loop below] node {a} ()
+         edge [bend left] node {b,c} (q2)
+    (q2) edge [bend left] node {b,c} (q1);
+\end{tikzpicture}

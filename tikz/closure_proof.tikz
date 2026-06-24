@@ -1,0 +1,8 @@
+\begin{tikzpicture}[auto, node distance=1.5cm, shorten >=2pt]
+  \node[state,initial,initial text=] (q0) {$q$}; 
+  \node[state] (q1) [right=of q0] {$q^\prime$}; 
+  \node[state] (q2) [right=of q1] {$q^{\prime\prime}$}; 
+  \path[->] 
+    (q0) edge node [swap] {$\left( \hspace{-4pt}\begin{array}{c} 0 \\ \vdots \\ 1 \\ \vdots \\ 1 \end{array} \hspace{-4pt}\right) \hspace{-8pt}\begin{array}{c} 0 \\[0.65cm] i \\[0.65cm] n \end{array}$} (q1)
+    (q1) edge node [swap] {$\left( \hspace{-4pt}\begin{array}{c} 1 \\ \vdots \\ 0 \\ \vdots \\ 1 \end{array} \hspace{-4pt}\right) \hspace{-8pt}\begin{array}{c} 0 \\[0.65cm] i \\[0.65cm] n \end{array}$} (q2);
+\end{tikzpicture}

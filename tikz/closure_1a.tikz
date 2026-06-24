@@ -1,0 +1,14 @@
+\begin{tikzpicture}[auto, node distance=0.8cm, shorten >=2pt]
+  \node[state,initial,initial text=] (q0) {$q_0$}; 
+  \node (d) [right=of q0] {$\dots$}; 
+  \node[state] (q3) [above right=of d] {$q_3$}; 
+  \node[state] (q4) [below right=of d] {$q_4$}; 
+  \node[state,accepting] (q5) [right=of q3] {$q_5$}; 
+  \node[state,accepting] (q6) [right=of q4] {$q_6$}; 
+  \path[->] 
+    (q0) edge (d)
+    (d) edge [bend left] (q3)
+    (d) edge [bend right] (q4)
+    (q3) edge node {a} (q5)
+    (q4) edge node {a} (q6);
+\end{tikzpicture}

@@ -1,0 +1,12 @@
+\begin{tikzpicture}
+  [level 1/.style={sibling distance=3cm},
+  level 2/.style={sibling distance=1cm}]
+  \node {$\p = q \lor Gp$}
+      child {
+          node {$q$}
+      }
+      child {
+          node {$Gp$}
+          child { node {$p,XG p$} }
+      };
+\end{tikzpicture}

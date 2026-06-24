@@ -1,0 +1,30 @@
+\begin{tikzpicture}[
+    state/.style={draw, rectangle, rounded corners=0.3cm},
+    box/.style={draw, rectangle, rounded corners, minimum width=7.6cm, minimum height=1.6cm},
+    node distance=0.6cm,
+    shorten >=2pt
+]
+
+  \node[box] (b0) at (0,0) {};
+  \node[anchor=north] at (b0.north) {$\neg \psi,\ \neg \msquare(x \neq 3),\ \neg \mcirc \psi,\ \neg \mcirc\msquare(x \neq 3)$};
+  \node[state] (a0) at (-1.5,-0.25) {$A_0{:}\ x=3$};
+  \node[state] (a1) at (1.5,-0.25) {$A_1{:}\ x\neq 3$};
+  \path[->] (b0) edge[loop above,distance=0.5cm] (b0);
+  \node[state, below=of b0] (a2) {$A_2{:}\ \begin{array}{c} x=3,\ \mcirc\msquare(x \neq 3),\\ \neg\mcirc \psi,\ \neg\msquare(x \neq 3),\ \neg \psi\end{array}$};
+  \path[->] (b0) edge (a2);
+
+  \node[box] (b1) at (0,-5) {};
+  \node[anchor=north] at (b1.north) {$\psi,\ \neg \msquare(x \neq 3),\ \mcirc \psi,\ \neg \mcirc\msquare(x \neq 3)$};
+  \node[state] (a4) at (-1.5,-5.3) {$A_4{:}\ x=3$};
+  \node[state] (a5) at (1.5,-5.3) {$A_5{:}\ x\neq 3$};
+  \path[->] (b1) edge[loop above,distance=0.5cm] (b1);
+  \node[state, below=of b1] (a6) {$A_6{:}\ \begin{array}{c} x=3,\ \mcirc\msquare(x \neq 3),\\ \mcirc \psi,\ \neg\msquare(x \neq 3),\ \psi\end{array}$};
+  \path[->] (b1) edge (a6);
+  \node[box, below=of a6] (b2) {};
+  \node[anchor=north] at (b2.north) {$\psi,\ x \neq 3,\ \mcirc\msquare (x \neq 3),\ \msquare(x \neq 3)$};
+  \node[state] (a3) at (-1.5,-9.4) {$A{:}\ \neg\mcirc \psi$};
+  \node[state] (a7) at (1.5,-9.4) {$A_7{:}\ \mcirc \psi$};
+  \path[->] (a6) edge (b2);
+  \path[->] (a7) edge[loop right,distance=0.5cm] (a7);
+
+\end{tikzpicture}

@@ -1,0 +1,6 @@
+\begin{tikzpicture}[>=stealth, scale=1.1]
+  \draw[-] (0,0) -- (4,0);
+  \foreach \x in {0,1,2,3,4} {
+    \draw[fill] (\x,0) circle (.4ex);
+  }
+\end{tikzpicture}

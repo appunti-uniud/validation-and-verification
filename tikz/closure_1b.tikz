@@ -1,0 +1,12 @@
+\begin{tikzpicture}[auto, node distance=0.8cm, shorten >=2pt]
+  \node[state,initial,initial text=,accepting] (q0) {$q_0$}; 
+  \node (d) [right=of q0] {$\dots$}; 
+  \node[state] (q3) [above right=of d] {$q_3$}; 
+  \node[state] (q4) [below right=of d] {$q_4$}; 
+  \path[->] 
+    (q0) edge (d)
+    (d) edge [bend right] (q3)
+    (d) edge [bend left] (q4)
+    (q3) edge [bend right] node [swap] {a} (q0)
+    (q4) edge [bend left] node {a} (q0);
+\end{tikzpicture}

@@ -1,0 +1,32 @@
+\begin{tikzpicture}[
+    every node/.style={font=\scriptsize},
+    snake/.style={
+        decorate,
+        decoration={snake,segment length=1.8mm,amplitude=0.3mm,pre length=1pt,post length=1pt}
+    },
+    dot/.style={
+        fill,
+        circle,
+        inner sep=0.7pt
+    }
+]
+
+\node[dot,label=left:$s_0$] (s0) at (0,0) {};
+
+\draw (s0) -- (2,1.5);
+\draw[densely dotted] (2,1.5) -- ++(0.5,0.375);
+\draw (s0) -- (2,-1.5);
+\draw[densely dotted] (2,-1.5) -- ++(0.5,-0.375);
+
+\node[dot,label=above:$p$] (p) at (1.5,0) {};
+\draw[->,snake] (s0) -- (p);
+
+\draw[snake] (p) -- node[dot,pos=.5,label=above:$q$] {} (2.7,1.2);
+
+\draw[snake] (p) -- (2,0.1);
+\draw[snake] (2,0.1) -- node[dot,pos=1,label=above:$q$] {} (2.8,0.4);
+\draw[snake] (2,0.1) -- node[dot,pos=.6,label=below:$q$] {} (2.6,-0.3);
+
+\draw[snake] (p) -- node[dot,pos=.8,label=below:$q$] {} (2.4,-0.9);
+
+\end{tikzpicture}

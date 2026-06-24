@@ -1,0 +1,18 @@
+\begin{tikzpicture}[>=stealth, scale=1.1]
+  \draw[-] (0,0) -- (5.3,0);
+  \foreach \x in {0,1,2,3,4,5} {
+    \draw[fill] (\x,0) circle (.3ex);
+  }
+  \draw[dashed] (5.4,0) -- (6,0);
+  
+  \foreach \x in {0,1,2,3,4,5} {
+    \node at (\x,-0.4) {$\x$};
+  }
+
+  \node at (0,0.4) {$\set{r}$};
+  \node at (1,0.4) {$\emptyset$};
+  \node at (2,0.4) {$\set{r,g}$};
+  \node at (3,0.4) {$\set{r}$};
+  \node at (4,0.4) {$\set{r,g}$};
+  \node at (5,0.4) {$\set{r}$};
+\end{tikzpicture}

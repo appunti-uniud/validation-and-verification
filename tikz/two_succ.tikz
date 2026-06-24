@@ -1,0 +1,17 @@
+\begin{tikzpicture}[
+  level 1/.style={sibling distance=3cm},
+  level 2/.style={sibling distance=1cm}]
+  \node (Root) {$\e$}
+      child {
+          node {0}
+          child { node {00} edge from parent node[left] {$+_0 1$} }
+          child { node {01} edge from parent node[right] {$+_1 1$} }
+          edge from parent node[left] {$+_0 1$}
+      }
+      child {
+          node {1}
+          child { node {10} edge from parent node[left] {$+_0 1$} }
+          child { node {11} edge from parent node[right] {$+_1 1$} }
+          edge from parent node[right] {$+_1 1$}
+      };
+\end{tikzpicture}

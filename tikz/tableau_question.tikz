@@ -1,0 +1,38 @@
+\begin{tikzpicture}[
+    state/.style={draw,rectangle,rounded corners=0.5cm,minimum width=6cm,minimum height=1.6cm,align=center},
+]
+
+  \node[state] (A2) {$A_2{:}\ \left\{\begin{array}{c} \neg p,\ \neg XGp,\ XF\neg p,\\ \neg Gp,\ F\neg p,\ \neg \p\end{array}\right\}$};
+  \node[state, right=of A2] (A3) {$A_3{:}\ \left\{\begin{array}{c} p,\ \neg XGp,\ XF\neg p,\\ \neg Gp,\ F\neg p,\ \neg \p\end{array}\right\}$};
+  \node[state, below=of A2] (A0) {$A_0{:}\ \left\{\begin{array}{c} \neg p,\ \neg XGp,\ \neg XF\neg p,\\ \neg Gp,\ F\neg p,\ \neg \p\end{array}\right\}$};
+  \node[state, right=of A0] (A1) {$A_1{:}\ \left\{\begin{array}{c} p,\ \neg XGp,\ \neg XF\neg p,\\ \neg Gp,\ \neg F\neg p,\ \neg \p\end{array}\right\}$};
+  \node[state, below=of A0] (A4) {$A_4{:}\ \left\{\begin{array}{c} \neg p,\ XGp,\ \neg XF\neg p,\\ \neg Gp,\ F\neg p,\ \neg \p\end{array}\right\}$};
+  \node[state, right=of A4] (A5) {$A_5{:}\ \left\{\begin{array}{c} p,\ XGp,\ \neg XF\neg p,\\ Gp,\ \neg F\neg p,\ \neg \p\end{array}\right\}$};
+  \node[state, below=of A4] (A6) {$A_6{:}\ \left\{\begin{array}{c} \neg p,\ XGp,\ XF\neg p,\\ \neg Gp,\ F\neg p,\ \neg \p \end{array}\right\}$};
+  \node[state, right=of A6] (A7) {$A_7{:}\ \left\{\begin{array}{c} p,\ XGp,\ XF\neg p,\\ Gp,\ F\neg p,\ \p\end{array}\right\}$};
+
+  \node[above=0.5 of A2] (x0) {};
+  \node[left=0.5 of A2] (x1) {};
+  \node[above left=0.5cm and 0.5cm of A0] (a0) {};
+  \node[above left=0.5cm and 0.5cm of A4] (a4) {};
+  \node[above left=0.5cm and 0.5cm of A6] (a6) {};
+
+  \path[->]
+    (A2.east) edge[bend left] (A3.west)
+    (A3.west) edge[bend left] (A2.east)
+    (A0) edge (A1)
+    (A4) edge (A5)
+    (A6) edge (A7);
+  
+  \path[->]
+    (A2) edge[loop below,distance=0.5cm] (A2)
+    (A3) edge[loop below,distance=0.5cm] (A3)
+    (A1) edge[loop below,distance=0.5cm] (A1)
+    (A5) edge[loop below,distance=0.5cm] (A5)
+    (A7) edge[loop below,distance=0.5cm] (A7);
+
+  \draw[->,rounded corners] (A3.north) |- (x0.west) -- (x0.east) -| (x1.south) -- (x1.north) |- (A0.west);
+  \draw[->,rounded corners] (A2.west) -| (a4.south) -- (a4.north) |- (A4.west);
+  \draw[->,rounded corners] (A2.west) -| (a6.south) -- (a6.north) |- (A6.west);
+
+\end{tikzpicture}

@@ -1,0 +1,98 @@
+\usetikzlibrary{automata,positioning,trees,patterns} % for automata and trees
+\usepackage{diagbox} % for boxes
+\usepackage{scalerel} % for scaling symbols
+\usepackage{stmaryrd} % for llbracket
+
+\setlength{\parindent}{0pt}
+
+\hyphenation{ta-bleau}
+\hyphenation{ta-bleaux}
+
+\newcommand{\wlogt}{w.l.o.g.\xspace}
+\newcommand{\Wlogt}{W.l.o.g.\xspace}
+
+\newcommand{\DBA}{\tuple{Q, A, \d, q_0, F}}
+\newcommand{\NBA}{\tuple{Q, A, \D, q_0, F}}
+\newcommand{\DMA}{\tuple{Q, A, \d, q_0, \F}}
+\newcommand{\NMA}{\tuple{Q, A, \D, q_0, \F}}
+\newcommand{\DRA}{\tuple{Q, A, \d, q_0, \O}}
+\newcommand{\NRA}{\tuple{Q, A, \D, q_0, \O}}
+
+\newcommand{\Aw}{A^\w}
+
+%\newcommand{\eNFA}{{{$\varepsilon$}-NFA\xspace}}
+\newcommand{\eNFA}{{e-NFA\xspace}}
+
+\newcommand{\Buchi}{B\"{u}chi\xspace}
+\newcommand{\wword}{$\w$-word\xspace}
+\newcommand{\wwords}{$\w$-words\xspace}
+\newcommand{\wclo}{$\w$-closure\xspace}
+\newcommand{\wlan}{$\w$-language\xspace}
+\newcommand{\wlans}{$\w$-languages\xspace}
+\newcommand{\wreg}{$\w$-regular\xspace}
+
+\newcommand{\SA}{$\text{S1S}_A$\xspace}
+
+\renewcommand{\succ}{\text{succ}}
+\newcommand{\succxy}{\succ(X,Y)}
+\newcommand{\tsuc}{$\t$-successor\xspace}
+
+\newcommand{\sing}[1]{\text{sing}(#1)}
+
+\renewcommand{\inf}[1]{\text{Inf}(#1)}
+\newcommand{\infs}{\inf{\sigma}}
+
+\newcommand{\eqn}{\equiv_{n}}
+\newcommand{\eqnn}{\equiv_{(n,1)}}
+
+\newcommand{\px}{\p(x)}
+
+\newcommand{\Twa}{T^\w_A}
+
+\newcommand{\AP}{{\mathcal{AP}}}
+\newcommand{\sAP}{(2^{\AP})^\w}
+
+\newcommand{\wY}{{\tilde{Y}}}
+\newcommand{\state}[1]{\text{state}(#1)}
+
+\newcommand{\bgraph}{\B_{(\P,\p)}}
+
+\newcommand{\mcirc}{{\mathbin{\scalerel*{\bigcirc}{gX}}}}
+\newcommand{\msquare}{{\mathbin{\scalerel*{\square}{gX}}}}
+
+\renewcommand{\emptyset}{\varnothing}
+
+\newcommand{\XX}{\mathrm{X}}
+\newcommand{\UU}{\mathrm{U}}
+\newcommand{\RRR}{\mathrm{R}}
+\newcommand{\EE}{\mathrm{E}}
+\renewcommand{\AA}{\mathrm{A}}
+\newcommand{\FF}{\mathrm{F}}
+\newcommand{\GG}{\mathrm{G}}
+\newcommand{\EX}{\mathrm{EX}}
+\newcommand{\AX}{\mathrm{AX}}
+\newcommand{\EU}{\mathrm{EU}}
+\newcommand{\AU}{\mathrm{AU}}
+\newcommand{\EF}{\mathrm{EF}}
+\newcommand{\AF}{\mathrm{AF}}
+\newcommand{\EG}{\mathrm{EG}}
+\newcommand{\AG}{\mathrm{AG}}
+\newcommand{\FG}{\mathrm{FG}}
+\newcommand{\GF}{\mathrm{GF}}
+
+\newcommand{\ol}[1]{\,\overline{\!{#1}}}
+\newcommand{\ul}[1]{\,\underline{{#1}\!}}
+%\newcommand{\oa}[1]{\overrightarrow{{#1}\!}}
+
+\newcommand{\lLk}{{}_l L_k}
+\newcommand{\kloop}[1]{\llbracket {#1} \rrbracket_k}
+\newcommand{\kloopl}[1]{{}_l \llbracket {#1} \rrbracket_k}
+\newcommand{\kloopil}[1]{{}_l \llbracket {#1} \rrbracket^i_k}
+\newcommand{\kloopsl}[1]{{}_l \llbracket {#1} \rrbracket^{\succ(i)}_k}
+
+\newcommand{\var}{\text{var}}
+\newcommand{\val}{\text{value}}
+\newcommand{\low}{\text{low}}
+\newcommand{\high}{\text{high}}
+
+\newcommand{\attr}{\text{Attr}}

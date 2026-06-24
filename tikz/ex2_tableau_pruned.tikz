@@ -1,0 +1,14 @@
+\begin{tikzpicture}[
+    state/.style={draw, rectangle, rounded corners=0.3cm},
+    box/.style={draw, rectangle, rounded corners, minimum width=7cm, minimum height=1.6cm},
+    node distance=0.6cm,
+    shorten >=2pt
+]
+
+  \node[box] (b1) at (0,0) {};
+  \node[anchor=north] at (b1.north) {$\p,\ \Diamond(x = 3),\ \mcirc \p,\ \mcirc\Diamond(x = 3)$};
+  \node[state] (a0) at (-1.5,-0.25) {$A_0{:}\ x=3$};
+  \node[state] (a1) at (1.5,-0.25) {$A_1{:}\ x\neq 3$};
+  \path[->] (b1) edge[loop above,distance=0.5cm] (b1);
+
+\end{tikzpicture}

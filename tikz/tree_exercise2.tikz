@@ -1,0 +1,127 @@
+\begin{tikzpicture}
+[
+  scale=0.9,
+  level 1/.style={sibling distance=4cm},
+  level 2/.style={sibling distance=2cm},
+  level 3/.style={sibling distance=1cm}
+]
+  \node at (-4.3,3) {$q_0$}
+    child{
+      node {\color{red}$q_F$}
+      child{
+        node {\color{red}$q_F$}
+        child { node {\color{red}$q_F$}}
+        child { node {\color{red}$q_F$}}
+      }
+      child{
+        node {\color{red}$q_F$}
+        child { node {\color{red}$q_F$}}
+        child { node {\color{red}$q_F$}}
+      }
+    }
+    child{
+      node {$q_a$}
+      child{
+        node {\color{red}$q_F$}
+        child { node {\color{red}$q_F$}}
+        child { node {\color{red}$q_F$}}
+      }
+      child{
+        node {$q_b$}
+        child { node {\color{red}$q_F$}}
+        child { node {$q_a$} edge from parent node[right] {$a$}}
+        edge from parent node[right] {$b$}
+      }
+      edge from parent node[right] {$a$}
+    };
+
+  \node at (4.3,3) {$q_0$}
+    child{
+      node {$q_a$}
+      child{
+        node {$q_a$}
+        child { node {$q_b$} edge from parent node[left] {$b$}}
+        child { node {\color{red}$q_F$}}
+        edge from parent node[left] {$a$}
+      }
+      child{
+        node {\color{red}$q_F$}
+        child { node {\color{red}$q_F$}}
+        child { node {\color{red}$q_F$}}
+      }
+      edge from parent node[left] {$a$}
+    }
+    child{
+      node {\color{red}$q_F$}
+      child{
+        node {\color{red}$q_F$}
+        child { node {\color{red}$q_F$}}
+        child { node {\color{red}$q_F$}}
+      }
+      child{
+        node {\color{red}$q_F$}
+        child { node {\color{red}$q_F$}}
+        child { node {\color{red}$q_F$}}
+      }
+    };
+
+  \node at (-4.3,-3) {$q_0$}
+    child{
+      node {\color{red}$q_F$}
+      child{
+        node {\color{red}$q_F$}
+        child { node {\color{red}$q_F$}}
+        child { node {\color{red}$q_F$}}
+      }
+      child{
+        node {\color{red}$q_F$}
+        child { node {\color{red}$q_F$}}
+        child { node {\color{red}$q_F$}}
+      }
+    }
+    child{
+      node {$q_b$}
+      child{
+        node {\color{red}$q_F$}
+        child { node {\color{red}$q_F$}}
+        child { node {\color{red}$q_F$}}
+      }
+      child{
+        node {$q_b$}
+        child { node {\color{red}$q_F$}}
+        child { node {$q_b$} edge from parent node[right] {$b$}}
+        edge from parent node[right] {$b$}
+      }
+      edge from parent node[right] {$b$}
+    };
+
+  \node at (4.3,-3) {$q_0$}
+    child{
+      node {$q_b$}
+      child{
+        node {$q_a$}
+        child { node {$q_b$} edge from parent node[left] {$b$}}
+        child { node {\color{red}$q_F$}}
+        edge from parent node[left] {$a$}
+      }
+      child{
+        node {\color{red}$q_F$}
+        child { node {\color{red}$q_F$}}
+        child { node {\color{red}$q_F$}}
+      }
+      edge from parent node[left] {$b$}
+    }
+    child{
+      node {\color{red}$q_F$}
+      child{
+        node {\color{red}$q_F$}
+        child { node {\color{red}$q_F$}}
+        child { node {\color{red}$q_F$}}
+      }
+      child{
+        node {\color{red}$q_F$}
+        child { node {\color{red}$q_F$}}
+        child { node {\color{red}$q_F$}}
+      }
+    };
+\end{tikzpicture}

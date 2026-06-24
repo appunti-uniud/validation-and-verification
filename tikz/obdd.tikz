@@ -1,0 +1,14 @@
+\begin{tikzpicture}[auto, node distance=1cm, shorten >=2pt]
+  \node (x1) {$x_1$}; 
+  \node (x2) [below right=of x1] {$x_2$}; 
+  \node (x3) [below left=of x2] {$x_3$}; 
+  \node (out0) [below left=of x3] {0}; 
+  \node (out1) [below right=of x3] {1}; 
+  \path[-]
+    (x1) edge node[pos=0.4,inner sep=2pt] {1} (x2)
+    (x1) edge node[inner sep=2pt,swap] {0} (out0)
+    (x2) edge node[pos=0.4,inner sep=2pt,swap] {0} (x3)
+    (x2) edge node[inner sep=2pt] {1} (out1)
+    (x3) edge node[pos=0.3,inner sep=2pt,swap] {0} (out0)
+    (x3) edge node[pos=0.4,inner sep=2pt] {1} (out1);
+\end{tikzpicture}

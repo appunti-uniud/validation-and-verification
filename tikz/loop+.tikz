@@ -1,0 +1,33 @@
+\begin{tikzpicture}[auto, node distance=1cm, shorten >=2pt, state/.style={draw, rounded corners}]
+
+  \node[state] (s0) {$s_0{:}\ \tuplev{x{:}0}$}; 
+  \node[below left=-0.2cm and -0.4cm of s0] (s0l) {}; 
+  \node[below right=-0.2cm and -0.4cm of s0] (s0r) {}; 
+  \node[above left=0.5cm and 0.5cm of s0] (start) {}; 
+  \node[state, below left=of s0] (s1) {$s_1{:}\ \tuplev{x \colon 1}$};
+  \node[state, below right=of s1] (s2) {$s_2{:}\ \tuplev{x{:}2}$};
+  \node[above left=-0.2cm and -0.4cm of s2] (s2l) {}; 
+  \node[above right=-0.2cm and -0.4cm of s2] (s2r) {}; 
+  \node[state, below right=of s0] (s3) {$s_3{:}\ \tuplev{x{:}3}$};
+  
+  \path[->]
+    (start) edge[bend left] (s0)
+    (s0) edge[loop above,distance=0.5cm] node {$\t_I$} (s0)
+    (s1) edge[loop left,distance=0.5cm] node {$\t_I$} (s1)
+    (s2) edge[loop below,distance=0.5cm] node {$\t_I$} (s2)
+    (s3) edge[loop right,distance=0.5cm] node {$\t_I$} (s3);
+  
+  \path[->, red]
+    (s0) edge[bend right] node {$\t_1$} (s1)
+    (s1) edge[bend right] node {$\t_1$} (s2)
+    (s2r) edge node[anchor=north west] {$\t_1$} (s0r);
+
+  \path[->, green]
+    (s2) edge[bend right] node {$\t_2$} (s3)
+    (s3) edge[bend right] node {$\t_2$} (s0)
+    (s0l) edge node[anchor=south east] {$\t_2$} (s2l);
+
+  \path[->, brown]
+    (s1) edge node {$\t_3$} (s3);
+
+\end{tikzpicture}

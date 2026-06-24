@@ -1,0 +1,37 @@
+\begin{tikzpicture}
+  \node at (-4.5,0) {$q_0$}
+    child{
+      node {\color{red}$q_F$}
+    }
+    child{
+      node {$q_a$}
+      edge from parent node[right] {$a$}
+    };
+
+  \node at (-2,0) {$q_0$}
+    child{
+      node {$q_a$}
+      edge from parent node[left] {$a$}
+    }
+    child{
+      node {\color{red}$q_F$}
+    };
+
+  \node at (2,0) {$q_0$}
+    child{
+      node {\color{red}$q_F$}
+    }
+    child{
+      node {$q_b$}
+      edge from parent node[right] {$b$}
+    };
+
+  \node at (4.5,0) {$q_0$}
+    child{
+      node {$q_b$}
+      edge from parent node[left] {$b$}
+    }
+    child{
+      node {\color{red}$q_F$}
+    };
+\end{tikzpicture}

@@ -1,0 +1,12 @@
+\begin{tikzpicture}[shorten >=4pt]
+  \foreach \x in {0,1,2,3,4,5} {
+    \draw[fill] (\x,0) circle (.2ex);
+  }
+  \foreach \x in {0,1,2,4} {
+    \draw[->] (\x,0) -- (\x+1,0);
+  }
+  \draw[dashed,->] (3,0) -- (4,0);
+  \path[->] (5,0) edge[bend right=50] (2,0);
+  \node[below] at (2,0) {$l$};
+  \node[below] at (5,0) {$k$};
+\end{tikzpicture}

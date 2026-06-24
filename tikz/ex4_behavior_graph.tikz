@@ -1,0 +1,52 @@
+\begin{tikzpicture}
+[
+  auto,
+  node distance=0.6cm,
+  shorten >=2pt,
+  state/.style={draw, rectangle, rounded corners=0.3cm, minimum width=1.8cm, minimum height=0.8cm}
+]
+
+  \node[state, initial, initial text=] (s0a5) {$(s_0, A_5)$};
+  \node[state, below=of s0a5] (s1a5) {$(s_1, A_5)$};
+  \node[right=-0.15cm of s1a5] (s1a5l) {$\t_I$};
+  \node[state, below=of s1a5] (s2a5) {$(s_2, A_5)$};
+  \node[state, below left=of s2a5] (s3a4) {$(s_3, A_4)$};
+  \node[state, below right=of s2a5] (s3a6) {$(s_3, A_6)$};
+
+  \node[state, initial, initial text=, right=3cm of s0a5] (s0a7) {$(s_0, A_7)$};
+  \node[state, below=of s0a7] (s1a7) {$(s_1, A_7)$};
+  \node[right=-0.15cm of s1a7] (s1a7l) {$\t_I$};
+  \node[state, below=of s1a7] (s2a7) {$(s_2, A_7)$};
+
+  \path[->]
+    (s0a5) edge[loop right,distance=0.5cm] node {$\t_I$} (s0a5)
+    (s1a5) edge[loop right,distance=0.5cm] (s1a5)
+    (s2a5) edge[loop right,distance=0.5cm] node {$\t_I$} (s2a5)
+    (s3a4) edge[loop left,distance=0.5cm] node {$\t_I$} (s3a4)
+    (s0a7) edge[loop right,distance=0.5cm] node {$\t_I$} (s0a7)
+    (s1a7) edge[loop right,distance=0.5cm] (s1a7)
+    (s2a7) edge[loop below,distance=0.5cm] node {$\t_I$} (s2a7)
+    (s3a4) edge[bend right=15] node[below] {$\t_I$} (s3a6);
+
+  \path[->, red]
+    (s0a5) edge node {$\t_1$} (s1a5)
+    (s1a5) edge node {$\t_1$} (s2a5)
+    (s0a7) edge node {$\t_1$} (s1a7)
+    (s1a7) edge node {$\t_1$} (s2a7)
+    (s2a5.north east) edge[bend right=55] node[swap] {$\t_1$} (s0a5.south east)
+    (s2a7.north east) edge[bend right=55] node[swap] {$\t_1$} (s0a7.south east);
+
+  \path[->, green]
+    (s2a5) edge node {$\t_2$} (s3a4)
+    (s2a5) edge node[swap] {$\t_2$} (s3a6)
+    (s3a4.north) edge[bend left=35] node {$\t_2$} (s0a5.west)
+    (s3a6.north east) edge[bend left=35] node {$\t_2$} (s0a7.west)
+    (s0a5.south west) edge[bend right=25] node[swap] {$\t_2$} (s2a5.north west)
+    (s0a7.south west) edge[bend right=25] node[swap] {$\t_2$} (s2a7.north west);
+
+  \path[->, brown]
+    (s1a5.south west) edge[bend right=25] node {$\t_3$} (s3a4.north)
+    (s1a5.south east) edge[bend left=25] node {$\t_3$} (s3a6.north);
+
+
+\end{tikzpicture}

@@ -1,0 +1,28 @@
+\begin{tikzpicture}
+[
+  auto,
+  node distance=0.6cm,
+  shorten >=2pt,
+  state/.style={draw, rectangle, rounded corners=0.3cm, minimum width=1.8cm, minimum height=0.8cm}
+]
+
+  \node[state, initial, initial text=] (s0a1) {$(s_0, A_1)$};
+  \node[state, below=of s0a5] (s1a1) {$(s_1, A_1)$};
+  \node[state, below=of s1a5] (s2a1) {$(s_2, A_1)$};
+  \node[state, below left=of s2a1] (s3a0) {$(s_3, A_0)$};
+
+  \path[->]
+    (s0a1) edge[loop right,distance=0.5cm] node {$\t_I$} (s0a1)
+    (s1a1) edge[loop right,distance=0.5cm] node {$\t_I$} (s1a1)
+    (s2a1) edge[loop right,distance=0.5cm] node {$\t_I$} (s2a1)
+    (s3a0) edge[loop left,distance=0.5cm] node {$\t_I$} (s3a0);
+
+  \path[->]
+    (s0a1) edge node {$\t$} (s1a1)
+    (s1a1) edge node {$\t$} (s2a1)
+    (s2a1) edge node {$\t$} (s3a0);
+
+  \path[->]
+    (s3a0.north) edge[bend left=35] node {$\t$} (s0a1.south west);
+
+\end{tikzpicture}

@@ -1,0 +1,5 @@
+\begin{tikzpicture}[auto, node distance=1.5cm, shorten >=2pt]
+  \node[state,initial,initial text=,accepting] (q0) {$q_0$}; 
+  \path[->] 
+    (q0) edge [loop above] node {$\left(\hspace{-4pt}\begin{array}{c} 0 \\ 0 \end{array}\hspace{-4pt}\right),\left(\hspace{-4pt}\begin{array}{c} 0 \\ 1 \end{array}\hspace{-4pt}\right),\left(\hspace{-4pt}\begin{array}{c} 1 \\ 1 \end{array}\hspace{-4pt}\right)$} (q0);
+\end{tikzpicture}

@@ -1,0 +1,20 @@
+\begin{tikzpicture}
+  [level 1/.style={sibling distance=3cm},
+  level 2/.style={sibling distance=1cm}]
+  \node at (0,0) {$\e$}
+      child {
+          node {0}
+          child {
+            node {00}
+            child { node {000} }
+            child { node {001} }
+          }
+          child { node {01} }
+      }
+      child {
+          node {1}
+          child { node {10} }
+          child { node {11} }
+      };
+  \node at (1,-4) {$\dots$};
+\end{tikzpicture}

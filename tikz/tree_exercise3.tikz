@@ -1,0 +1,17 @@
+\begin{tikzpicture}
+  [level 1/.style={sibling distance=2cm},
+  level 2/.style={sibling distance=1cm}]
+  \node {$q_0$}
+    child{
+      node {$q_a$}
+      child{node {\color{red}$q_F$} edge from parent node[left] {$a$}}
+      child{node {\color{red}$q_F$} edge from parent node[right] {$a$}}
+      edge from parent node[left] {$f$}
+    }
+    child{
+      node {$q_b$}
+      child{node {\color{red}$q_F$} edge from parent node[left] {$b$}}
+      child{node {\color{red}$q_F$} edge from parent node[right] {$b$}}
+      edge from parent node[right] {$f$}
+    };
+\end{tikzpicture}

@@ -1,0 +1,12 @@
+\begin{tikzpicture}[auto, node distance=1cm, shorten >=2pt]
+  \node[state,initial,initial text=] (p0) {$p_0$}; 
+  \node[state] (p1) [right=of p0] {$p_1$}; 
+  \node[state] (p2) [below=of p0] {$p_2$}; 
+  \node[state] (p3) [right=of p2] {$p_3$}; 
+  \path[->] 
+    (p0) edge (p1)
+    (p1) edge (p2)
+    (p2) edge (p3)
+    (p3) edge (p0)
+    (p2) edge [loop above] (p2);
+\end{tikzpicture}

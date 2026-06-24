@@ -1,0 +1,28 @@
+\begin{tikzpicture}[>=stealth, scale=1.1]
+
+% Axes
+\draw[-] (0,0) -- (5.5,0);
+\draw[-] (0,-0.1) -- (0,0.1);
+
+\node at (-0.3,0) {$\a$};
+
+% X-axis ticks
+\foreach \x in {1,2,3,4,5} {
+  \draw (\x,0.1) -- (\x,-0.1);
+}
+
+% Ovals from origin to each tick
+\foreach \k in {2,3,4} {
+  \draw[thick] ({\k/2+1},0) ellipse ({\k/2} and {\k/10+0.5});
+}
+
+% labels
+\node at (0.5,-0.2) {$\in U$};
+\foreach \x in {2,3,4,5} {
+  \node at ({\x-0.5},-0.2) {$\in V$};
+}
+\node at (1.4,0.8) {$\in V$};
+\node at (2.4,1.1) {$\in V$};
+\node at (3.5,1.1) {$\in V$};
+
+\end{tikzpicture}

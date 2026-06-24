@@ -1,0 +1,11 @@
+\begin{tikzpicture}[auto, node distance=1.5cm, shorten >=2pt]
+  \node[state,initial,initial text=,accepting] (e) {$\e$}; 
+  \node[state] (a) [right=of e] {a}; 
+  \node[state] (b) [below right=of e] {b}; 
+  \path[->] 
+    (e) edge [bend left] node {a,b} (a)
+    (a) edge [bend left] node {b} (e)
+    (a) edge [bend left] node {a} (b)
+    (e) edge [bend right] node [swap] {b} (b)
+    (b) edge [loop below] node [swap] {a,b} (b);
+\end{tikzpicture}

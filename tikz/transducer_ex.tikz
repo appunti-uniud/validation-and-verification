@@ -1,0 +1,9 @@
+\begin{tikzpicture}[auto, node distance=1cm, shorten >=2pt]
+  \node[state,initial,initial text=] (q0) {$q_0$}; 
+  \node[state] (q1) [right=of q0] {$q_1$}; 
+  \node[state,accepting] (q2) [right=of q1] {$q_2$}; 
+  \path[->] 
+    (q0) edge node {a/a} (q1)
+    (q1) edge [bend left] node [align=center] {a/ac\\b/bc} (q2) % without align=center the newline \\ breaks
+    (q2) edge [bend left] node [align=center] {a/a\\b/b} (q1);
+\end{tikzpicture}

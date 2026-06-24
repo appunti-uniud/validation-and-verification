@@ -1,0 +1,8 @@
+\begin{tikzpicture}[auto, node distance=1.5cm, shorten >=2pt]
+  \node[state,initial,initial text=,accepting] (e) {$\e$}; 
+  \node[state] (a) [right=of e] {a}; 
+  \path[->] 
+    (e) edge [bend left] node {a,b} (a)
+    (a) edge [loop above] node {a} (a)
+    (a) edge [bend left] node {b} (e);
+\end{tikzpicture}

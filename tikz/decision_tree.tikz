@@ -1,0 +1,62 @@
+\begin{tikzpicture}
+  [level 1/.style={sibling distance=4cm},
+  level 2/.style={sibling distance=2cm},
+  level 3/.style={sibling distance=1cm}]
+  \node at (0,0) {$x_1$}
+      child {
+          node {$x_2$}
+          child {
+            node {$x_3$}
+            child {
+              node {0}
+              edge from parent node[left] {0}
+            }
+            child {
+              node {0}
+              edge from parent node[right] {1}
+            }
+            edge from parent node[left] {0}
+          }
+          child {
+            node {$x_3$}
+            child {
+              node {0}
+              edge from parent node[left] {0}
+            }
+            child {
+              node {0}
+              edge from parent node[right] {1}
+            }
+            edge from parent node[right] {1}
+          }
+          edge from parent node[left] {0}
+      }
+      child {
+          node {$x_2$}
+          child {
+            node {$x_3$}
+            child {
+              node {0}
+              edge from parent node[left] {0}
+            }
+            child {
+              node {1}
+              edge from parent node[right] {1}
+            }
+            edge from parent node[left] {0}
+          }
+          child {
+            node {$x_3$}
+            child {
+              node {1}
+              edge from parent node[left] {0}
+            }
+            child {
+              node {1}
+              edge from parent node[right] {1}
+            }
+            edge from parent node[right] {1}
+          }
+          edge from parent node[right] {1}
+      };
+\end{tikzpicture}

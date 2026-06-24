@@ -1,0 +1,886 @@
+%!TeX program = lualatex
+
+\documentclass[oneside]{academica}
+\input{preamble}
+
+\overtitle{oral exam questions for}
+\title{Verification and Validation}
+\author{Transcribed from handwritten notes}
+
+\begin{document}
+
+\frontmatter
+
+\maketitle
+
+\tableofcontents
+
+\mainmatter
+
+%======================================================================
+\chapter{How to read these notes}
+%======================================================================
+
+These notes reconstruct, in a clean and structured form, the questions
+asked during a session of \emph{oral} exams of the Verification and
+Validation course. They were taken live, by hand, in a mixture of
+English and Italian, and are deliberately telegraphic; what follows is a
+faithful transcription together with a topic-oriented study companion.
+
+\section*{Source and method}
+
+The raw material is a set of $18$ handwritten pages
+(\texttt{domande.pdf}). Each oral exam there begins with the topic
+\emph{chosen by the student} (written \quoted{choice} / \quoted{argomento
+a scelta}), followed by the examiner's follow-up questions, and usually
+ends with a grade. Wherever the handwriting was incomplete, ambiguous,
+or simply wrong, the gap has been filled using the course notes
+(\texttt{notes\_restructured.tex}) and standard knowledge of the field.
+Every such decision is logged in the companion file
+\texttt{ambiguities.md}.
+
+\section*{Conventions}
+
+\begin{itemize}
+  \item \textbf{Two parts.} \autoref{cha:bysession} is the
+    \emph{faithful} transcription --- ``what was asked'' in each single
+    exam, in the original order. \autoref{cha:bytopic} is the
+    \emph{derived}, study-oriented reorganisation of the same questions
+    by topic, with short model answers and pointers back to the notes.
+  \item \textbf{Square brackets} \texttt{[\,\ldots\,]} mark text that is
+    \emph{not} in the original scribbles but reconstructed by me
+    (intended answer, missing operator, the property a question refers
+    to, etc.).
+  \item A trailing \quoted{(?)} marks a low-confidence reading.
+  \item \textbf{Grades} follow the Italian scale: $18$ is the pass mark,
+    $30$ the maximum, and $30L$ means \emph{30 e lode} (30 cum laude).
+    Verdicts such as \quoted{failed}, \quoted{left blank}
+    (\textit{lasciato}) or \quoted{knew everything} (\textit{saputo
+    tutto}) are reported as written.
+  \item \textbf{LTL} operators are written in plain italics
+    ($X,U,F,G$); \textbf{CTL} operators use the upright macros
+    ($\EX,\AX,\EF,\AF,\EG,\AG,\AU,\EU$), exactly as in the course notes.
+\end{itemize}
+
+\begin{note}
+  Several exams in the source carry no explicit \quoted{choice} header
+  (the chosen topic was not written down) and a few carry no grade.
+  These omissions are reported as \quoted{not recorded}; they are gaps
+  in the original notes, not in the transcription.
+\end{note}
+
+%======================================================================
+\chapter{What was asked --- exam by exam}\label{cha:bysession}
+%======================================================================
+
+This chapter follows the original page order. Fifteen distinct sittings
+could be separated (each starts with a student-chosen topic). The table
+below is an index; the grade column reproduces the mark written at the
+end of each exam.
+
+\begin{center}
+  \small
+  \begin{tabular}{@{}clcc@{}}
+    \textbf{\#} & \textbf{Chosen topic / first question} & \textbf{Lang.} & \textbf{Grade} \\
+    \hline
+    1  & S1S $\equiv$ NBA --- the easy direction of the proof          & en & $30L$ \\
+    2  & Model checking: definition                                    & en & $19$ \\
+    3  & Overview of all the automaton types                           & en & --- (Q3 wrong) \\
+    4  & Learning automata                                             & en & $18$ \\
+    5  & $\approx_{\A}$ saturates / finite index / partitions          & en & not rec. \\
+    6  & LTL                                                           & en & Q5 failed \\
+    7  & [not recorded] --- starts at \quoted{finitely many $a$}       & en & $23$ \\
+    8  & [not recorded] --- DBA / S1S / OBDD                           & en & not rec. \\
+    9  & DBA                                                          & en & not rec. \\
+    10 & LTL+P succinctness                                            & it & $29$ \\
+    11 & Closure of BA under intersection                              & it & not rec. \\
+    12 & S1S $\equiv$ $\w$-regular (Büchi's theorem)                   & it & $30L$ \\
+    13 & Muller automata $\equiv$ Boolean combinations                 & it & $28$ \\
+    14 & Closure of $\w$-regular languages under union                 & it & left blank \\
+    15 & Learning automata                                             & it & $30L$ \\
+  \end{tabular}
+\end{center}
+
+%----------------------------------------------------------------------
+\section{Exam 1 --- S1S $\equiv$ NBA, the \texorpdfstring{$\Leftarrow$}{<=} direction}
+%----------------------------------------------------------------------
+\textbf{Chosen topic:} the proof that every S1S-definable language is
+$\w$-regular ($\Leftarrow$).\quad\textbf{Grade:} $30L$.
+
+\begin{enumerate}
+  \item Prove briefly the \emph{other} direction ($\Rightarrow$): from a
+    Büchi automaton, build an equivalent S1S sentence.
+  \item Do you recall a language that is definable by a (nondeterministic)
+    BA but \emph{not} by a DBA? [The lecture example: \quoted{finitely
+    many $a$}.]
+  \item Can you translate that property into LTL? [$FG\,\neg a$.]
+  \item Express it also in S1S. [$\exists x\,\forall y\,(x<y \rightarrow
+    y\notin Q_a)$.]
+  \item We want to build an OBDD for $(x \leftrightarrow y)\wedge R$,
+    preferably in canonical form. First fix an order of the variables,
+    then draw the diagram.
+  \item What is the complexity of building such an OBDD? [Exponential in
+    the worst case.]
+\end{enumerate}
+
+%----------------------------------------------------------------------
+\section{Exam 2 --- Model checking: definition}
+%----------------------------------------------------------------------
+\textbf{Chosen topic:} the definition of model checking.\quad
+\textbf{Grade:} $19$.
+
+\begin{enumerate}
+  \item Model checking vs.\ testing.
+  \item {}[Given a small Kripke structure on states $q_0,\dots,q_3$:] what
+    does $GF(a)$ mean / compute on it?
+  \item Give a trace that \emph{is} a model of $GF(a)$ and one that is
+    \emph{not}.
+  \item Translate the property $GF(a)$ into a Büchi automaton. [This is
+    essentially \quoted{infinitely many $a$}, the example seen in the
+    lecture.]
+  \item Can you construct the complement of [the] automaton?
+  \item Explain the acceptance condition (semantics) of a Büchi
+    automaton.
+\end{enumerate}
+
+%----------------------------------------------------------------------
+\section{Exam 3 --- Overview of all the automaton types}
+%----------------------------------------------------------------------
+\textbf{Chosen topic:} an overview of all the kinds of automaton seen in
+the course.\quad\textbf{Grade:} not recorded (the LTL translation in Q3
+was marked wrong).
+
+\begin{enumerate}
+  \item Prove $\mathrm{DBA}\subseteq\mathrm{DMA}$.
+  \item (LTL) Give an example of a model of $GF(a)\leftrightarrow
+    GF(b)$.
+  \item Translate from natural language into LTL: \quoted{today is sunny,
+    but tomorrow it will rain}.
+\end{enumerate}
+
+\begin{note}
+  For Q3 the student wrote the S1S-style answer $S(x)\wedge R(x{+}1)$,
+  which was marked wrong ($\otimes$): LTL has \emph{no} explicit position
+  variable~$x$. The intended answer is $\mathit{sunny}\wedge
+  X\,\mathit{rain}$ (the examiner's hint was essentially \quoted{what is
+  $x$?}).
+\end{note}
+
+%----------------------------------------------------------------------
+\section{Exam 4 --- Learning automata}
+%----------------------------------------------------------------------
+\textbf{Chosen topic:} learning automata.\quad\textbf{Grade:} $18$.
+
+\begin{enumerate}
+  \item Give a Büchi automaton for \quoted{finitely many $a$}.
+  \item $GF(p)\leftrightarrow GF(q)$: what does $GF(p)$ mean? Draw it.
+  \item Closure properties of BA ($\cup,\cap,\neg$, and projection).
+  \item Prove the case of union.
+\end{enumerate}
+
+%----------------------------------------------------------------------
+\section{Exam 5 --- The congruence \texorpdfstring{$\approx_{\A}$}{~A}}
+%----------------------------------------------------------------------
+\textbf{Chosen topic:} \quoted{$\approx_{\A}$ saturates the language, has
+finite index, partitions [it]}.\quad\textbf{Grade:} not recorded.
+
+\begin{enumerate}
+  \item Prove closure of BA under union.
+  \item Give a BA accepting the alternation of $p$ and $q$, i.e.\
+    $(pq)^{\w}$. [The scribble writes $(pq)^*$; for an
+    $\w$-automaton the intended language is the infinite word $(pq)^{\w}$.]
+\end{enumerate}
+
+%----------------------------------------------------------------------
+\section{Exam 6 --- LTL}
+%----------------------------------------------------------------------
+\textbf{Chosen topic:} LTL.\quad\textbf{Grade:} not recorded (Q5 was
+marked \emph{failed}).
+
+\begin{enumerate}
+  \item Express $G$ and $F$ in basic LTL [i.e.\ using only $X$ and $U$].
+  \item BA for \quoted{infinitely many $a$}.
+  \item Acceptance condition of a BA. [Side note in the source:
+    $GF(p)$ means \quoted{infinitely many $p$}.]
+  \item Prove that BA are closed under union --- remember you cannot use
+    $\e$-moves.
+  \item BA for \quoted{finitely many $a$}. \textbf{--- failed.}
+\end{enumerate}
+
+%----------------------------------------------------------------------
+\section{Exam 7 --- [topic not recorded]}
+%----------------------------------------------------------------------
+\textbf{Chosen topic:} not written down; the first question is
+\quoted{finitely many $a$}.\quad\textbf{Grade:} $23$.
+
+\begin{enumerate}
+  \item \quoted{finitely many $a$}.
+  \item How many computations does this automaton have?
+  \item S1S and Büchi's theorem: prove the $\Rightarrow$ direction.
+  \item Some translations into LTL.
+  \item The definition of model checking.
+\end{enumerate}
+
+%----------------------------------------------------------------------
+\section{Exam 8 --- [topic not recorded: DBA / S1S / OBDD]}
+%----------------------------------------------------------------------
+\textbf{Chosen topic:} not written down.\quad\textbf{Grade:} not
+recorded. (The page is partly the student's worked reasoning.)
+
+\begin{enumerate}
+  \item Can we use the union of DBAs to obtain an NBA? [Yes: DBA are
+    closed under union --- but one must be careful with the product
+    construction.]
+  \item Büchi's theorem ($\Leftarrow$), base case $\succxy$. Since the
+    successor is injective, $\forall x\in X\,\forall y\in Y.\;x{+}1=y$
+    already forces $X$ and $Y$ to be singletons, so one may drop the
+    explicit \quoted{$X,Y$ singletons} requirement.
+  \item Quantifier (quantification) depth.
+  \item OBDD: give the definition and construct one for $(x_1
+    \leftrightarrow x_2)\vee x_3$. [Then merge equal outputs and remove
+    redundant nodes.]
+\end{enumerate}
+
+%----------------------------------------------------------------------
+\section{Exam 9 --- DBA}
+%----------------------------------------------------------------------
+\textbf{Chosen topic:} deterministic Büchi automata.\quad\textbf{Grade:}
+not recorded.
+
+\begin{enumerate}
+  \item State and prove the theorem: a language is recognised by a DBA
+    iff it is the \quoted{limit} --- the vectorial closure
+    $\overrightarrow{W}$ --- of a regular set $W$.
+  \item \quoted{finitely many $a$}.
+  \item Define compassion and justice in LTL.
+\end{enumerate}
+Further follow-ups noted on the side:
+\begin{itemize}
+  \item why does refinement \emph{partition} [the language]?
+  \item with respect to $\approx_{\A}$;
+  \item closure under intersection.
+\end{itemize}
+
+%----------------------------------------------------------------------
+\section{Exam 10 --- LTL+P succinctness}
+%----------------------------------------------------------------------
+\textbf{Chosen topic:} LTL with past is (at most exponentially) more
+succinct than LTL.\quad\textbf{Grade:} $29$.\quad\textbf{Language:}
+Italian.
+
+\medskip
+\textit{Warm-up before the chosen topic:} definitions of DBA and NBA and
+the DBA$\to$NBA conversion; the definition of LTL and the
+NBA$\to$LTL-formula conversion; and an example translating between LTL
+and S1S.
+
+\begin{enumerate}
+  \item {}[Chosen topic.] There is no LTL+P formula whose equivalent LTL
+    formula is only \emph{sub}-exponentially larger (in $n$); i.e.\ LTL+P
+    can be exponentially more succinct than LTL.
+  \item A Büchi automaton recognising the language over $\mathit{AP}_n =
+    \set{p_0,\dots,p_n}$: can one be built in time polynomial in $n$? How
+    much memory is needed to store the state at instant $0$? ($n$ bits
+    $\Rightarrow$ $2^n$ states\ldots).
+  \item In S1S, is the ordering $<$ necessary? No --- it is definable
+    from $+1$. Prove it.
+  \item Is S1S without $\forall$ as expressive as full S1S? Why may I
+    replace each $\forall$ by $\neg\exists$? [And how does this put the
+    formula into normal form?]
+  \item Formal definition of model checking: what are the inputs and the
+    output? [Input: a program, a property, and an optional initial
+    state. Output: an exhaustive verdict (this is what distinguishes it
+    from testing).]
+\end{enumerate}
+\begin{note}
+  The source notes \quoted{difficulty on the second part of Q4}.
+\end{note}
+
+%----------------------------------------------------------------------
+\section{Exam 11 --- Closure of BA under intersection}
+%----------------------------------------------------------------------
+\textbf{Chosen topic:} the proof that Büchi automata are closed under
+intersection.\quad\textbf{Grade:} not recorded.\quad\textbf{Language:}
+Italian.
+
+\begin{enumerate}
+  \item {}[Chosen topic.] Prove closure of BA under intersection. [The
+    product construction uses a flag in $\set{1,2,3}$ that tracks which
+    automaton's final set was visited; the accepting set is
+    $F = Q_1\times Q_2\times\set{3}$, \emph{not}
+    $F_1\times F_2\times(\dots)$.]
+  \item Why can we \emph{not} proceed via the complementation of a Muller
+    automaton?
+    \begin{itemize}
+      \item define a Muller automaton;
+      \item explain how its complementation works.
+    \end{itemize}
+    Then: which model-checking problems are solvable with automata, in
+    particular with Büchi automata? Why is satisfiability done with
+    Büchi and not with another type of automaton? [The student did not
+    know this second part and left it.]
+\end{enumerate}
+
+%----------------------------------------------------------------------
+\section{Exam 12 --- S1S \texorpdfstring{$\equiv$}{=} \texorpdfstring{$\w$}{omega}-regular (Büchi's theorem)}
+%----------------------------------------------------------------------
+\textbf{Chosen topic:} S1S is equivalent to $\w$-regularity.\quad
+\textbf{Grade:} $30L$ (\quoted{knew everything}).\quad\textbf{Language:}
+Italian.
+
+\begin{enumerate}
+  \item {}[Chosen topic.] S1S $\equiv$ $\w$-regular. The direction
+    $\mathrm{BA}\subseteq\mathrm{S1S}$ was sketched quickly (mainly the
+    acceptance / \quoted{final} relation). The prenex form $\exists Y_0
+    \cdots \exists Y_m\, \p(Y_0,\dots,Y_m)$ was introduced --- the same
+    normal form sought as the answer to Q4 \quoted{two students ago}
+    (see Exam~10, Q4). Then $\text{S1S}_0$: the atoms $X\subseteq Y$ and
+    $\succxy$; the connectives $\wedge,\vee,\neg$; and the quantifiers
+    $\forall,\exists$, where $\exists$ corresponds to projection.
+  \item Why don't we use only Muller automata [in the translation]?
+    Because of the existential quantifier (projection): it introduces
+    non-determinism.
+  \item We saw that DBA are less expressive; can we characterise them?
+    [Yes: $\overrightarrow{W}\subseteq\mathrm{DBA}$ and
+    $\mathrm{DBA}\subseteq\overrightarrow{W}$ --- the DBA-recognisable
+    languages are exactly the vectorial closures of regular sets.]
+  \item OBDD: take $\p = (x_1 \leftrightarrow x_2)\wedge x_1$. Explain
+    OBDDs briefly and give the canonical OBDD for $\p$ [which simplifies
+    to $x_1\wedge x_2$].
+\end{enumerate}
+\begin{note}
+  Remark made during the exam: an OBDD may be drawn roughly and then
+  cleaned up afterwards --- one need not get it right on the first try.
+\end{note}
+
+%----------------------------------------------------------------------
+\section{Exam 13 --- Muller automata \texorpdfstring{$\equiv$}{=} Boolean combinations}
+%----------------------------------------------------------------------
+\textbf{Chosen topic:} Muller automata recognise exactly the Boolean
+(vectorial) combinations of regular sets.\quad\textbf{Grade:} $28$ (fine
+through Q3, insufficient on Q4).\quad\textbf{Language:} Italian.\quad
+(The source notes this was a \quoted{new topic --- extra points}.)
+
+\begin{enumerate}
+  \item {}[Chosen topic.] A language is DMA-recognisable iff it is a
+    Boolean combination of vectorial closures $\overrightarrow{W}$ of
+    regular sets.
+  \item LTL: express the alternation of $p$ and $\neg p$:
+    \[
+      G\big((p\rightarrow X\neg p)\wedge(\neg p\rightarrow X p)\big).
+    \]
+  \item Describe the synthesis problem. [Church's problem: realise a
+    black-box function from an input stream to an output stream by a
+    finite-state (Mealy) machine; solved via Muller automata / games.]
+  \item What is the automata-theoretic approach to model checking? What
+    operation realises it? [Build the automaton for $\neg\p$, take its
+    product / intersection with the system, then test emptiness.]
+  \item Explain justice and compassion. Why is justice not a problem for
+    LTL (it can be put into a tableau), whereas compassion is?
+\end{enumerate}
+
+%----------------------------------------------------------------------
+\section{Exam 14 --- Closure of \texorpdfstring{$\w$}{omega}-regular languages under union}
+%----------------------------------------------------------------------
+\textbf{Chosen topic:} closure of $\w$-regular languages under
+union.\quad\textbf{Grade:} not recorded (left blank).\quad
+\textbf{Language:} Italian.
+
+\begin{enumerate}
+  \item {}[Chosen topic.] Prove that $\w$-regular languages are closed
+    under union. --- The student did not know the definition of the
+    transition relation $\D\colon Q\times A\to 2^Q$ and left the answer
+    blank (\textit{lasciato}).
+\end{enumerate}
+
+%----------------------------------------------------------------------
+\section{Exam 15 --- Learning automata}
+%----------------------------------------------------------------------
+\textbf{Chosen topic:} learning automata.\quad\textbf{Grade:} $30L$
+(\quoted{knew everything}).\quad\textbf{Language:} Italian.
+
+\begin{enumerate}
+  \item {}[Chosen topic.] Is $u\,t =_{L_0} v\,t$ a right invariance (right
+    congruence)? [Discuss why / why not.]
+  \item Give an example of a language that is \emph{not} $\w$-regular.
+    Define an \quoted{ultimately periodic word}. For $\w$-regular $L_1,
+    L_2$, relate $\mathrm{UP}(L_1)$ and $\mathrm{UP}(L_2)$ to $L_1,L_2$
+    [the characterisation theorem: equal sets of ultimately periodic
+    words imply equal languages].
+  \item Justice on the (maximal and non-maximal) connected components: for
+    all $\t$, either some state has $\t$ disabled, or $\t$ is taken. Why
+    is compassion different? For all $\t$, either \emph{no} state has
+    $\t$ enabled, or some state has $\t$ taken.
+  \item Tamarin: given a pair $(x,y)$, what can the attacker derive about
+    $x$ and about $y$? [Under Dolev--Yao the attacker can project a pair
+    into its two components; conversely it needs both components to
+    construct the pair.]
+\end{enumerate}
+
+%======================================================================
+\chapter{Questions organised by topic}\label{cha:bytopic}
+%======================================================================
+
+The same questions, regrouped by subject, each with a short model answer
+and a pointer to the relevant part of the course notes. References such
+as \quoted{(Exam~6, Q1)} point back to \autoref{cha:bysession}.
+
+%----------------------------------------------------------------------
+\section{Büchi automata and \texorpdfstring{$\w$}{omega}-regular languages}
+%----------------------------------------------------------------------
+
+\subsection{\quoted{Finitely many \texorpdfstring{$a$}{a}} and \quoted{infinitely many \texorpdfstring{$a$}{a}}}
+\emph{Asked in Exams 1, 4, 6, 7, 9 (and as an S1S/LTL translation in
+Exam~1).}
+
+These two languages are the workhorses of the course because they
+separate deterministic from nondeterministic Büchi automata.
+
+\paragraph{Infinitely many $a$ ($\exists^{\w}n.\,\a(n)=a$).}
+DBA-recognisable. Two states $q_0,q_1$; on $a$ go to the final state
+$q_1$, on $b$ go back to $q_0$; $F=\set{q_1}$. A run is accepting iff it
+visits $q_1$ infinitely often, i.e.\ reads $a$ infinitely often. In LTL:
+$GF\,a$. (This is a \emph{reset automaton}: each symbol leads to a single
+state regardless of the current one.)
+
+\paragraph{Finitely many $a$ ($\exists^{<\w}n.\,\a(n)=a$).}
+$\w$-regular but \textbf{not} DBA-recognisable. A (nondeterministic) BA
+\quoted{guesses} the last position of an $a$: stay in $q_0$ reading
+anything, then nondeterministically move to a final state $q_1$ from
+which only $b$ is allowed forever; $F=\set{q_1}$.
+\begin{itemize}
+  \item \textbf{LTL:} $FG\,\neg a$ --- eventually, always $\neg a$.
+  \item \textbf{S1S:} $\exists x\,\forall y\,(x<y \rightarrow y\notin
+    Q_a)$ --- from some position on, no symbol is an $a$.
+  \item \textbf{Why no DBA?} If a DBA recognised it as
+    $\overrightarrow{W}$ for some regular $W$, one could splice
+    arbitrarily many $a$'s back in (because $b^{\w}$ has infinitely many
+    prefixes in $W$, then $b^{n_1}a b^{\w}$ does too, etc.) and build a
+    word with infinitely many $a$'s that the automaton would still
+    accept --- contradiction.
+\end{itemize}
+Failing to produce the BA for \quoted{finitely many $a$} is exactly what
+sank Q5 in Exam~6: the trap is to try to do it deterministically.
+
+\subsection{Acceptance condition; the meaning of \texorpdfstring{$GF$}{GF} and \texorpdfstring{$FG$}{FG}}
+\emph{Asked in Exams 2, 4, 6.}
+
+A computation $\s$ of a BA $\A=\NBA$ on an $\w$-word $\a$ starts in $q_0$,
+respects $\D$ at every step, and is \textbf{successful} iff
+$\infs\cap F\neq\emptyset$ --- i.e.\ it visits some final state
+\emph{infinitely often}. $\A$ accepts $\a$ iff \emph{some} computation on
+$\a$ is successful (note \quoted{some}, not \quoted{the}: there are
+in general infinitely many computations). Correspondingly, as an LTL
+slogan:
+\[
+  GF\,p \;=\; \text{$p$ holds infinitely often},\qquad
+  FG\,p \;=\; \text{$p$ eventually holds forever (stability)}.
+\]
+
+\subsection{How many computations does an automaton have? (Exam 7, Q2)}
+On an infinite input a \emph{nondeterministic} automaton has in general
+infinitely (even uncountably) many computations --- at each step every
+choice allowed by $\D$ spawns a branch. A \emph{deterministic} one has
+exactly one computation per input word. This is precisely why acceptance
+is defined existentially (\quoted{there exists a successful
+computation}).
+
+\subsection{Closure properties and the \texorpdfstring{$\e$}{epsilon}-move caveat}
+\emph{Asked in Exams 4, 5, 6, 8, 11, 14.}
+
+$\w$-regular languages are closed under $\cup$, $\cap$, complementation,
+left concatenation with a regular set, and $\w$-iteration.
+
+\paragraph{Union (Exams 4, 5, 6, 14).}
+Take the two BA on disjoint state sets. Unlike for NFAs, you \emph{cannot}
+just add a fresh initial state with $\e$-moves to the two old initial
+states (Büchi automata as defined here have no $\e$-transitions). The
+clean fix is a nondeterministic initial choice: duplicate the outgoing
+transitions of both old initial states onto a single new initial state
+(and keep it final if either old one was). This is the very point the
+examiner stressed in Exam~6, Q4.
+
+\paragraph{Intersection (Exam 11).}
+A simple product is not enough, because the two automata may visit their
+final states at different times. The standard construction takes
+$Q_1\times Q_2\times\set{1,2,3}$ with a flag that advances $1\to2$ when
+$\A_1$ hits $F_1$, $2\to3$ when $\A_2$ hits $F_2$, then resets $3\to1$;
+the accepting set is
+\[
+  F \;=\; Q_1\times Q_2\times\set{3},
+\]
+\emph{not} $F_1\times F_2\times(\dots)$. Reaching flag $3$ infinitely
+often certifies that \emph{both} automata accept.
+
+\paragraph{Why projection/$\Delta$ matters (Exam 14).}
+The student in Exam~14 could not state $\D\colon Q\times A\to 2^Q$ --- the
+nondeterministic transition relation. It is the backbone of every BA
+construction (union, projection, the S1S translation), which is why not
+knowing it blocks the whole proof.
+
+\subsection{Complementation and the congruence \texorpdfstring{$\approx_{\A}$}{~A}}
+\emph{Chosen topic of Exam 5.}
+
+Given a BA $\A$, define $u\approx_{\A}v$ iff for all states $s,s'$:
+$s\to_u s' \iff s\to_v s'$ and $s\to_u^F s' \iff s\to_v^F s'$ (the second
+relation additionally requires a final state along the way). Then
+$\approx_{\A}$ is a \textbf{congruence of finite index} that
+\textbf{saturates} $\L(\A)$:
+\[
+  UV^{\w}\cap L\neq\emptyset \;\Longrightarrow\; UV^{\w}\subseteq L .
+\]
+Saturation of $L$ implies saturation of $\overline{L}$, and every
+$\w$-word lies in some $UV^{\w}$ with $VV\subseteq V$. Hence both $L$ and
+$\overline{L}$ are finite unions $\bigcup_i U_iV_i^{\w}$ of
+$\w$-regular pieces, giving closure under complementation
+\emph{effectively}. This is the machinery behind \quoted{$\approx_{\A}$
+saturates, has finite index, partitions}.
+
+\subsection{Emptiness, \texorpdfstring{$\w$}{omega}-regular expressions and ultimately periodic words}
+\emph{Asked in Exam 15.}
+
+\begin{itemize}
+  \item \textbf{Emptiness} of a BA is decidable and easy: it is a
+    reachability problem --- reach a final state from $q_0$ and find a
+    cycle through it.
+  \item An \textbf{$\w$-regular expression} has the form
+    $\bigcup_{i=1}^n U_i\cdot V_i^{\w}$ with $U_i,V_i$ regular; BA and
+    $\w$-regular expressions are equi-expressive.
+  \item An \textbf{ultimately periodic} word is $u\,v^{\w}$ with
+    $u,v\in A^*$. Every non-empty $\w$-regular language contains one (so
+    a language with \emph{no} ultimately periodic word --- e.g.\ the
+    common-suffix language of a non-ultimately-periodic $\b$ --- is
+    \textbf{not} $\w$-regular; this answers the \quoted{non-$\w$-regular
+    example} of Exam~15).
+  \item \textbf{Characterisation (Exam 15, Q2):} an $\w$-regular language
+    is uniquely determined by its set $\mathrm{UP}(L)$ of ultimately
+    periodic words. Hence $\mathrm{UP}(L_1)=\mathrm{UP}(L_2)\Rightarrow
+    L_1=L_2$ (contrapositive: $L_1\neq L_2$ forces a difference already
+    among ultimately periodic words, because $L_1\setminus L_2$ is
+    $\w$-regular and non-empty, hence contains one).
+\end{itemize}
+
+%----------------------------------------------------------------------
+\section{DBA, Muller, Rabin and the expressiveness hierarchy}
+%----------------------------------------------------------------------
+\emph{Asked in Exams 3, 8, 9, 11, 12, 13.}
+
+\subsection{\texorpdfstring{$\mathrm{DBA}\subseteq\mathrm{DMA}$}{DBA <= DMA} (Exam 3, Q1)}
+Given a DBA $\DBA$, the equivalent DMA keeps the same transition
+structure and sets $\F=\set{P\in 2^Q : P\cap F\neq\emptyset}$. A Muller
+computation is successful iff the set of infinitely-often-visited states
+lies in $\F$, i.e.\ contains a final state --- exactly the Büchi
+condition.
+
+\subsection{Characterising DBA via the vectorial closure (Exams 9, 12)}
+$L$ is DBA-recognisable iff $L=\overrightarrow{W}$ for a regular $W$,
+where $\overrightarrow{W}=\set{\a : \a \text{ has infinitely many
+prefixes in } W}$. Both inclusions ($\overrightarrow{W}\subseteq
+\mathrm{DBA}$ and $\mathrm{DBA}\subseteq\overrightarrow{W}$) are the
+content of Exam~9 Q1 and Exam~12 Q3. Since DBA are not closed under
+complementation, $\mathrm{DBA}\subsetneq\mathrm{BA}$.
+
+\subsection{Muller \texorpdfstring{$\equiv$}{=} Boolean combinations of vectorial closures (Exams 11, 13)}
+A language is DMA-recognisable iff it is a Boolean combination (union,
+intersection, complement) of languages $\overrightarrow{W}$ with $W$
+regular. Together with McNaughton's theorem
+($\mathrm{NBA}\equiv\mathrm{DMA}$) this yields the final hierarchy
+\[
+  \mathrm{DBA}\;\subsetneq\;\mathrm{DMA}\equiv\mathrm{DRA}\equiv
+  \mathrm{NBA}\equiv\mathrm{NMA}\equiv\mathrm{NRA},
+\]
+i.e.\ everything except DBA is equally expressive. The
+\quoted{complementation of a Muller automaton} question (Exam~11, Q2)
+turns on this: complementation is easy for the \emph{deterministic}
+Muller/Rabin condition but not for nondeterministic Büchi directly.
+
+\subsection{Union of DBAs to get an NBA (Exam 8, Q1)}
+Yes: DBA are closed under union (and intersection) via the product
+construction --- but the construction goes through products of states,
+and the result is read as a Büchi/Muller condition; one cannot naively
+merge initial states.
+
+%----------------------------------------------------------------------
+\section{S1S and Büchi's theorem}
+%----------------------------------------------------------------------
+\emph{Asked in Exams 1, 7, 8, 10, 12.}
+
+\subsection{The two directions}
+\textbf{$\Rightarrow$ (BA $\to$ S1S; Exams 1 Q1, 7 Q3, 12 Q1).}
+From $\A=\NBA$ with $Q=\set{0,\dots,m}$, write $\exists Y_0\cdots\exists
+Y_m\,\p(Y_0,\dots,Y_m)$ where $Y_i$ collects the positions in state $i$.
+The matrix $\p$ has three conjuncts: start in $q_0$ with a unique state
+per position; respect $\D$ at every step; and visit some final state
+infinitely often (the \quoted{final relation}
+$\bigvee_{i\in F}\forall x\,\exists y\,(x<y\wedge y\in Y_i)$).
+
+\textbf{$\Leftarrow$ (S1S $\to$ BA; chosen in Exam 1).}
+Done by induction on formula structure after reducing to $\text{S1S}_0$.
+
+\subsection{\texorpdfstring{$\text{S1S}_0$}{S1S0} and the successor base case (Exams 8, 12)}
+$\text{S1S}_0$ keeps only second-order variables, with atoms $X\subseteq
+Y$ and $\succxy$ (meaning $X=\set{x},Y=\set{y},x{+}1=y$). The translation
+is then inductive: $\wedge,\vee$ by intersection/union, $\neg$ by
+complementation, and $\exists$ by \textbf{projection} (Exam~12, Q1). The
+base automata for $X\subseteq Y$ and $\succxy$ are trivial. The remark in
+Exam~8 Q2 is that, since the successor is injective, $\forall x\in
+X\,\forall y\in Y.\,x{+}1=y$ already pins $X,Y$ to singletons.
+
+\subsection{Why nondeterminism / Muller (Exam 12, Q2)}
+Projection ($\exists X$) is implemented by \emph{erasing} one track of
+the transition labels, which is sound precisely because BA are
+nondeterministic. A purely deterministic device (e.g.\ deterministic
+Muller alone) cannot perform projection directly; hence the construction
+must pass through nondeterministic Büchi automata.
+
+\subsection{\texorpdfstring{$<$}{<} from \texorpdfstring{$+1$}{+1}, \texorpdfstring{$\forall$}{forall} from \texorpdfstring{$\neg\exists$}{not-exists}, quantifier depth (Exams 8, 10)}
+\begin{itemize}
+  \item \textbf{$<$ is definable from $+1$} (Exam~10, Q3):
+    $x<y \equiv \forall X\,[\,x{+}1\in X \wedge \forall z(z\in
+    X\rightarrow z{+}1\in X)\rightarrow y\in X\,]$. The converse needs
+    second order, so $<$ is strictly more expressive than $+1$ at first
+    order.
+  \item \textbf{$\forall$ as $\neg\exists$} (Exam~10, Q4): $\forall
+    x\,\p\equiv\neg\exists x\,\neg\p$. Rewriting a prenex formula this
+    way turns it into alternating blocks $\exists\cdots\neg\exists\cdots$;
+    the number of negations equals the number of quantifier alternations.
+  \item \textbf{Quantifier depth} (Exam~8, Q3) is the maximum nesting of
+    quantifiers. It controls everything: membership in the S1S theory is
+    \emph{non-elementary} (a tower of exponentials whose height is the
+    alternation depth), even though BA emptiness is polynomial --- the
+    blow-up lives in the formula-to-automaton translation. (WS1S, the
+    weak variant, is the version Büchi actually used; it is equivalent to
+    S1S.)
+\end{itemize}
+
+%----------------------------------------------------------------------
+\section{Linear Temporal Logic (LTL)}
+%----------------------------------------------------------------------
+\emph{Asked in Exams 2, 3, 4, 6, 13 (and translations in 1, 7).}
+
+\subsection{Deriving \texorpdfstring{$G$}{G} and \texorpdfstring{$F$}{F} from the basic operators (Exam 6, Q1)}
+The primitive modalities are $X$ (next) and $U$ (until). Then
+\[
+  F\,\p \;\equiv\; \top\,U\,\p, \qquad G\,\p \;\equiv\; \neg F\,\neg\p .
+\]
+
+\subsection{Natural language to LTL, and \quoted{what is \texorpdfstring{$x$}{x}?} (Exam 3, Q3)}
+\quoted{Today is sunny, but tomorrow it will rain} becomes
+\[
+  \mathit{sunny}\wedge X\,\mathit{rain}.
+\]
+The wrong answer given in the exam, $S(x)\wedge R(x{+}1)$, is
+\emph{S1S} thinking: LTL is evaluated at an implicit \quoted{current
+instant} and has no position variable $x$ to quantify or index. Time
+advances only through the modalities ($X$, $U$, $F$, $G$).
+
+\subsection{Alternation of \texorpdfstring{$p$}{p} and \texorpdfstring{$\neg p$}{not p} (Exam 13, Q2)}
+\[
+  G\big((p\rightarrow X\neg p)\wedge(\neg p\rightarrow X p)\big),
+\]
+i.e.\ the truth value of $p$ flips at every step.
+
+\subsection{Models, non-models and \texorpdfstring{$GF(a)\leftrightarrow GF(b)$}{GF(a)<->GF(b)}}
+\emph{Exams 2, 4 (meaning and models), 3 (the biconditional).}
+$GF\,a$ holds on a trace iff $a$ is true at infinitely many positions; so
+$(\set{a,b})^{\w}$ and $(\set{b}\set{b}\set{a}\set{b})^{\w}$ satisfy it,
+whereas $\set{a}\cdot(\set{b})^{\w}$ does not. A model of
+$GF(a)\leftrightarrow GF(b)$ (Exam~3, Q2) is any trace where $a$ and $b$
+are \emph{both} infinitely frequent (e.g.\ $(\set{a,b})^{\w}$) or
+\emph{both} only finitely frequent (e.g.\ $\emptyset^{\w}$); a trace with
+infinitely many $a$ but finitely many $b$ falsifies it.
+
+\subsection{Kamp's theorem}
+LTL captures exactly the \emph{first-order} fragment of S1S over linear
+orders. This frames every \quoted{translate to LTL / to S1S} exercise:
+LTL = FO over $(\NN,<)$, while full S1S adds (monadic) second-order
+power.
+
+%----------------------------------------------------------------------
+\section{LTL with past, and succinctness (Exam 10)}
+%----------------------------------------------------------------------
+LTL+P adds the past modalities $Y$ (yesterday) and $S$ (since), with
+derived $O$ (once), $H$ (historically) and weak yesterday $\widetilde{Y}$.
+
+\begin{itemize}
+  \item \textbf{Same expressiveness:} LTL+P is exactly as expressive as
+    LTL (past adds no new languages).
+  \item \textbf{Strictly more succinct (the chosen topic):} LTL+P can be
+    \emph{exponentially} more succinct. The witness family $L_n$ over
+    $\set{p_0,\dots,p_n}$ has a linear-size LTL+P formula but every LTL
+    formula for it is at least exponential --- because every NBA for
+    $L_n$ is doubly exponential ($2^{2^{\mathcal{O}(n)}}$) while each LTL/LTL+P
+    formula yields an at-most-exponential NBA. Exam~10 Q2's
+    \quoted{store the state at instant $0$ in $n$ bits $\Rightarrow 2^n$
+    states} is the intuition for that lower bound.
+\end{itemize}
+
+%----------------------------------------------------------------------
+\section{Fairness: justice vs.\ compassion}
+%----------------------------------------------------------------------
+\emph{Asked in Exams 9, 13, 15.}
+
+\textbf{Justice} (weak fairness): a transition that is \emph{continuously}
+enabled cannot be ignored forever. \textbf{Compassion} (strong fairness):
+a transition that is enabled \emph{infinitely often} cannot be taken only
+finitely often. Compassion implies justice, not conversely.
+
+\paragraph{In LTL (Exams 9 Q3, 13 Q5).}
+\[
+  \text{justice:}\quad GF(\mathit{enabled})\;\text{eventually settled}\;
+  \rightarrow GF(\mathit{taken}),\qquad
+  \text{compassion:}\quad GF(\mathit{enabled})\rightarrow GF(\mathit{taken}).
+\]
+More precisely justice is $\neg F\big(G(\mathit{enabled})\wedge
+G(\neg\mathit{taken})\big)$ and compassion is
+$\neg\big(GF(\mathit{enabled})\wedge FG(\neg\mathit{taken})\big)$. Note
+$GF(\mathit{enabled}\rightarrow\mathit{taken})$ is \emph{not} the same ---
+it would force \quoted{taken at the same instant as enabled}.
+
+\paragraph{On components / supergraphs (Exams 13 Q5, 15 Q3).}
+For a strongly connected subgraph $S$:
+\begin{itemize}
+  \item $S$ is \emph{just} if every $\t\in\J$ is either taken in $S$ or
+    disabled at \emph{some} node of $S$;
+  \item $S$ is \emph{compassionate} if every $\t\in\C$ is either taken in
+    $S$ or disabled at \emph{all} nodes of $S$.
+\end{itemize}
+Justice is preserved by enlarging the graph (it holds for supergraphs),
+so it can be handled directly in the tableau --- this is why
+\quoted{justice is not a problem for LTL}. Compassion is \emph{not}
+preserved by supergraphs (a larger SCS may enable a transition that the
+smaller one never did), so MSCS-checking alone is insufficient and a
+dedicated decomposition is needed --- this is why \quoted{compassion is
+different}.
+
+%----------------------------------------------------------------------
+\section{Model checking}
+%----------------------------------------------------------------------
+\emph{Asked in Exams 2, 7, 10, 13.}
+
+\subsection{Definition, inputs and output (Exams 2, 7, 10)}
+Given a Kripke structure $M$ (the system), a state $s$, and a temporal
+formula $\p$, model checking decides whether $M,s\models A\p$ (all paths
+from $s$ satisfy $\p$). Inputs: a model/program, a property, and
+(optionally) an initial state; output: a yes/no verdict and, on failure,
+a \textbf{counterexample} trace. LTL model checking is PSPACE-complete.
+
+\subsection{Model checking vs.\ testing (Exam 2, Q1)}
+Model checking is automatic, \textbf{exhaustive}, and unbiased (it does
+not privilege \quoted{likely} scenarios), and it returns a counterexample
+when a property fails. Testing only samples behaviours. The price is the
+\emph{state-space explosion} and dependence on the quality of the model.
+
+\subsection{The automata-theoretic approach (Exam 13, Q4)}
+Build a Büchi automaton $\A_{\neg\p}$ for the negation of the property,
+take its product (intersection) with the system automaton, and check the
+result for \textbf{emptiness}: $M\models\p$ iff $\L(M)\cap\L(\A_{\neg\p})
+=\emptyset$. The key \quoted{operation} is therefore
+intersection-then-emptiness. (Equivalently, in the tableau/behaviour-graph
+formulation of the notes: build $\B_{(P,\p)}$ and search for an adequate
+--- fair and fulfilling --- subgraph.)
+
+%----------------------------------------------------------------------
+\section{Symbolic methods and OBDDs}
+%----------------------------------------------------------------------
+\emph{Asked in Exams 1, 8, 12.}
+
+\subsection{What an OBDD is}
+An Ordered Binary Decision Diagram is a reduced, ordered decision graph
+for a Boolean function. Once a variable order is fixed, the reduced OBDD
+is a \textbf{canonical form}: it is unique and minimal, so equivalence of
+formulas reduces to graph isomorphism. Reduction applies three rules
+until stable: (1) merge equal leaves; (2) merge isomorphic internal nodes
+(same variable, same $\low$, same $\high$); (3) delete redundant nodes
+($\low(v)=\high(v)$). The remark from Exam~12 --- draw it roughly, then
+clean up --- is exactly this reduction process.
+
+\subsection{The worked formulas}
+\begin{itemize}
+  \item \textbf{$(x\leftrightarrow y)\wedge R$} (Exam 1, Q5), order
+    $x,y,R$: test $x$; on each branch test $y$ and keep going only if
+    $y=x$ (else $\to 0$); finally test $R$ ($R{=}1\to 1$, $R{=}0\to 0$).
+    The two \quoted{$y$ matches $x$} branches share the same $R$-node,
+    which merges in the reduced diagram.
+  \item \textbf{$(x_1\leftrightarrow x_2)\wedge x_1$} (Exam 12, Q4)
+    simplifies to $x_1\wedge x_2$: test $x_1$ ($0\to0$), then $x_2$
+    ($0\to0$, $1\to1$). A clean two-node OBDD.
+  \item \textbf{$(x_1\leftrightarrow x_2)\vee x_3$} (Exam 8, Q4): test
+    $x_1,x_2$; if $x_1=x_2$ the function is already $1$; otherwise it
+    equals $x_3$. So the \quoted{$x_1=x_2$} paths go to $1$ and the
+    \quoted{$x_1\neq x_2$} paths go to an $x_3$-node.
+\end{itemize}
+
+\subsection{Complexity (Exam 1, Q6)}
+In the worst case an OBDD is \textbf{exponential} in the number of
+variables, and finding the optimal variable order is NP-complete; good
+heuristics (keep variables that interact close together) usually keep it
+manageable. Symbolically, $\exists x\,f \equiv f|_{x\leftarrow 0}\vee
+f|_{x\leftarrow 1}$ and $\forall x\,f\equiv f|_{x\leftarrow 0}\wedge
+f|_{x\leftarrow 1}$ (the \textsc{Restrict}/\textsc{Apply} operations),
+which is what makes symbolic model checking over OBDDs work.
+
+%----------------------------------------------------------------------
+\section{The synthesis problem (Exam 13, Q3)}
+%----------------------------------------------------------------------
+Church's synthesis problem: given a specification $\p(X,Y)$ relating an
+\emph{input} stream $X$ (chosen by the environment) to an \emph{output}
+stream $Y$ (chosen by us), build a finite-state (Mealy) machine that
+reads $X$ bit-by-bit and produces $Y$ on the fly so that $(\a,\b)\models
+\p$ --- or report that none exists. It is the realizability (not just
+satisfiability) question, naturally read as an infinite two-player game:
+the environment plays inputs, the system replies with outputs, and the
+system wins iff the specification holds. The Büchi--Landweber theorem
+solves it for S1S/Muller specifications: every Muller game on a finite
+arena is determined with finite-state strategies (memory bounded by
+$n!\cdot n$ via the Latest Appearance Record). The exam's phrasing ---
+\quoted{a black-box function input$\to$output, realised with Muller
+automata} --- is this setup.
+
+%----------------------------------------------------------------------
+\section{Protocol verification: Tamarin (Exam 15, Q4)}
+%----------------------------------------------------------------------
+Tamarin verifies security protocols in the symbolic
+\textbf{Dolev--Yao} model, where the attacker controls the network: it
+can read, intercept, block, replay and \emph{forge} messages from its
+current knowledge. Knowledge is closed under the equational theory and
+the term constructors; in particular \textbf{pairing} is transparent to
+the attacker:
+\[
+  \text{from } \langle x,y\rangle \text{ the attacker derives both } x
+  \text{ and } y \text{ (projection)},
+\]
+and conversely it can build $\langle x,y\rangle$ only if it already knows
+\emph{both} $x$ and $y$. (Contrast with encryption: from $\mathtt{enc}(m,
+k)$ it gets $m$ only if it also knows $k$.) That is the expected answer
+to \quoted{given $(x,y)$, what can the attacker derive about $x$ and
+$y$?}
+
+%----------------------------------------------------------------------
+\section{Learning automata}
+%----------------------------------------------------------------------
+\emph{Chosen topic of Exams 4 and 15.}
+
+The learner discovers an unknown regular language $L_0$ by
+\textbf{membership} queries (is $w\in L_0$?) and \textbf{equivalence}
+queries (is my hypothesis correct? --- answered with a counterexample).
+Membership alone is insufficient (infinitely many words); equivalence
+alone is only exponential; together (Angluin's $L^*$) the minimal DFA is
+learned in polynomially many queries. The hypothesis is built from an
+observation table over sets $S$ (representatives) and $T$ (test
+suffixes), kept $T$-minimal and $T$-complete.
+
+\paragraph{Right invariance of the relativised relation (Exam 15, Q1).}
+The full Myhill--Nerode relation $u\sim_{L_0}v$ (i.e.\ $\forall t.\ ut\in
+L_0\iff vt\in L_0$) \emph{is} a right congruence: if $u\sim_{L_0}v$ then
+$ua\sim_{L_0}va$, by absorbing the leading $a$ into the test word
+($t=at'$). But the \emph{relativised} relation
+$\approx_{L_0,T}$ (testing only over a finite $T$) is \textbf{not} always
+right invariant: appending a symbol can send two $T$-equivalent words
+into different classes, because $T$ may not contain the suffixes that
+distinguish them. This asymmetry --- the exam's question --- is exactly
+what drives the $L^*$ loop: a counterexample adds the missing suffixes to
+$T$, restoring progress toward the (right-invariant, finite-index) limit
+$\sim_{L_0}$.
+
+\end{document}

@@ -1,0 +1,18 @@
+\begin{tikzpicture}[>=stealth, scale=1.1]
+  \draw[-] (0,0) -- (4,0);
+  \foreach \x in {0,2,4} {
+    \draw[fill] (\x,0) circle (.6ex);
+  }
+  \foreach \x in {0.25,1.75,2.25,3.75} {
+    \draw[fill] (\x,0) circle (.5ex);
+  }
+  \foreach \x in {0.5,1.5,2.5,3.5} {
+    \draw[fill] (\x,0) circle (.4ex);
+  }
+  \foreach \x in {0.75,1.25,2.75,3.25} {
+    \draw[fill] (\x,0) circle (.3ex);
+  }
+  \foreach \x in {1,3} {
+    \draw[fill] (\x,0) circle (.2ex);
+  }
+\end{tikzpicture}

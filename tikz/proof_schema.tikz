@@ -1,0 +1,6 @@
+\begin{tikzpicture}[auto, node distance=1cm, shorten >=2pt, decoration={snake,segment length=1.8mm,amplitude=0.3mm,post length=4pt}]
+  \node[state,initial,initial text=] (q0) {$q_0$}; 
+  \node[state,accepting] (qf) [right=of q0] {$q_f$}; 
+  \draw[->, decorate] (q0) -- (qf);
+  \path[->] (qf) edge [loop right] (qf);
+\end{tikzpicture}

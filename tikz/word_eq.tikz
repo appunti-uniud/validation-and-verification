@@ -1,0 +1,7 @@
+\begin{tikzpicture}[auto, node distance=1cm, shorten >=2pt]
+  \node[state,initial,initial text=] (q0) {$q_0$}; 
+  \node[state,accepting] (q1) [right=of q0] {$q_1$}; 
+  \path[->] 
+    (q0) edge [bend left] node {a} (q1)
+    (q1) edge [bend left] node {a} (q0);
+\end{tikzpicture}
