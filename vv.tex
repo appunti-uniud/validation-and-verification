@@ -2100,11 +2100,11 @@ We want to define automata over trees, in particular NBA and NRA.
 
 Recalling the tree $T_0$ from \autoref{ex:tree_t0}, we're going to show how to define it in S2S.
 
-First, we encode the alphabet $A = \set{a,b}$ by mapping $a$ into $0$, and $b$ into $1$, like so:
+First, we encode the alphabet $A = \set{a,b}$ by mapping $a$ into $1$, and $b$ into $0$, like so:
 \begin{center}
   \input{tikz/t0_encoding.tikz}
 \end{center}
-Then we create a second-order variable $X_1$ which captures the position of the nodes in the infinite path where the $1$ occurs, and a formula $\p (X_1)$ that ensures that there exists a path with infinite many occurrences of an $a$, which is equal to:
+Then we create a second-order variable $X_1$ which captures the position of the nodes in the infinite path where the $1$ occurs, and a formula $\p (X_1)$ that ensures that there exists a path with infinitely many occurrences of an $a$, which is equal to:
 \begin{equation*}
   \p (X_1) = \exists Y\, \Bigtuple{\text{path}(Y) \land \forall x\, \bigtuple{x \in Y \to \exists y\, \tuple{y \in Y \land x<y \land y \in X_1}}}
 \end{equation*}
