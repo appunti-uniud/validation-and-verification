@@ -3600,7 +3600,7 @@ Given a finite prefix $\sigma[0..k]$ of a trace and an LTL formula $\p$:
 For example, $G\,p$ is permanently false as soon as $\neg p$ is observed; $F\,p$ is permanently true as soon as $p$ is observed; $G\,F\,p$ remains undecided on any finite prefix.
 
 \paragraph{Monitor construction.}
-A monitor for an LTL formula $\p$ can be constructed as a \textbf{deterministic finite automaton} (DFA) over $2^{AP}$ (the set of propositional valuations) with three sinks: $\top$, $\bot$, and a set of non-sink states representing the undecided region. The construction follows the tableau method for LTL: states correspond to consistent sets of obligations, and transitions advance the obligations by one step. Once a sink is reached, the verdict is final.
+A monitor for an LTL formula $\p$ can be constructed as a \textbf{deterministic finite automaton} (DFA) over $2^{AP}$ (the set of propositional valuations) with two sink states, $\top$ and $\bot$, together with a set of non-sink states representing the undecided region. The construction follows the tableau method for LTL: states correspond to consistent sets of obligations, and transitions advance the obligations by one step. Once a sink is reached, the verdict is final.
 
 \section{Active Automata Learning}\label{sec:learning-automata}
 
