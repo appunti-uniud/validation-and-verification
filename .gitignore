@@ -264,3 +264,6 @@ TSWLatexianTemp*
 
 # standalone packages
 *.sta
+
+## build outputs (see Makefile)
+*.pdf
