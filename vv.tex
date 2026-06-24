@@ -2033,7 +2033,7 @@ We want to define automata over trees, in particular NBA and NRA.
   A NRA that works over trees is a tuple $\A = \NRA$ where $\O = \{\,(L_1,U_1), \ldots,\allowbreak (L_n,U_n)\,\}$.
   
   \bigskip
-  The run $r$ is successful if for all paths $\pi$ there exists a pair $(L_j,U_j)$ \st $\inf{\pi} \cap L_j \neq \emptyset \andt \inf{\pi} \cap U_j \neq \emptyset$, \ie, the state in the first component must occur finitely many times, while the state in the second must occur infinitely many times.
+  The run $r$ is successful if for all paths $\pi$ there exists a pair $(L_j,U_j)$ \st $\inf{\pi} \cap L_j = \emptyset \andt \inf{\pi} \cap U_j \neq \emptyset$, \ie, the state in the first component must occur finitely many times, while the state in the second must occur infinitely many times.
 \end{definition*}
 
 \begin{theorem}[NBA $\mapsto$ NRA]\label{thm:nba_nra}
