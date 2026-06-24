@@ -500,7 +500,7 @@ General regular expressions cannot be less expressive than the other two.
     \item[\color{pink!200}$\Rightarrow$] For this direction, DFA will be used as a choice of automaton.
 
     Let $\A = \tuple{\set{\vars{q}{1}{n}},A,\d,q_1,F}$ be a DFA.
-    Let $R_{i,j}^k$ be the set of words $x$ \st $\d(q_i,x) = q_j$ and for all proper prefixes of $x$, with $y \neq x$ and $y \neq \e$, \ie, all intermediate states, if $\d(q,y) = q_l$, then $l \le k$.
+    Let $R_{i,j}^k$ be the set of words $x$ \st $\d(q_i,x) = q_j$ and for all proper prefixes of $x$, with $y \neq x$ and $y \neq \e$, \ie, all intermediate states, if $\d(q_i,y) = q_l$, then $l \le k$.
 
     \textbf{base case}
     \begin{equation*}
