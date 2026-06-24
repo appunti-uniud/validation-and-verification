@@ -2006,7 +2006,7 @@ S2S is obtained from S1S by:
 
 Here are implemented some examples of functions:
 \begin{itemize}
-  \item $\text{chain}(X)\!: \forall x \in X, y \in Y \quad x<y \lor y<x \lor x=y$, \ie, a set of nodes that are prefix ordered, \eg, $\set{0, 00, 001, 00100, 0010001}$;
+  \item $\text{chain}(X)\!: \forall x, y \in X \quad x<y \lor y<x \lor x=y$, \ie, a set of nodes that are prefix ordered, \eg, $\set{0, 00, 001, 00100, 0010001}$;
 
   \item $\text{path}(X)\!: \text{chain}(X) \land\, \nexists Y\, \big(X \subseteq Y \land X \neq Y \land\, \text{chain}(Y)\big)$, \ie, a particular chain, called \emph{maximal chain}, that have no missing nodes in the middle, \eg, $\{0, 00, 001, 0010, 00100, 0010$-\\$00, 0010001\}$;
 
