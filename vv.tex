@@ -1700,7 +1700,7 @@ Some elements of \SA are redundant:
   Given $A = \set{a,b,c}$, the language that includes only those \wwords where the number of $b$ and $c$ in between $a$ is even, is
   \begin{align*}
     \forall x,y\ [&x \in Q_a \land y \in Q_a \land x<y \land \\
-                  &\neg\exists z \left( x<z \land z<y \land z \in Q_a \right) \to \exists X \left( x \in X \land \forall z \left( z \in X \to z+1 \notin X \right) \land y \notin X \right) ]
+                  &\neg\exists z \left( x<z \land z<y \land z \in Q_a \right) \to \exists X \left( x \in X \land \forall z \left( z \in X \leftrightarrow z+1 \notin X \right) \land y \notin X \right) ]
   \end{align*}
 \end{example*}
 
