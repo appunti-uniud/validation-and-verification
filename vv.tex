@@ -2865,7 +2865,7 @@ To work on model checking , we'll introduce the following notations:
   Is there an adequate SCS?
   This is the case, because the path $\theta_\p = (A_1 A_1 A_1 A_0)^\w$ is fulfilling due to $A_0$ being fulfilling and being taken infinitely often in the path.
   Moreover, is just because the path contains at least one node in which $\t$ is taken (in this case all of them).
-  Because it's both fair (due to being just) and fulfilling, by definition of an Adequate subgraph, the subgraph $S = \set{(s_0, A_1),(s_1, A_1),(s_2, A_1),(s_3, A_0)}$ is adequate, therefore it follows that LOOP has a computation that satisfies $\p \colon \msquare\Diamond(x = 3)$ and the formula is $\p$-valid.
+  Because it's both fair (due to being just) and fulfilling, by definition of an Adequate subgraph, the subgraph $S = \set{(s_0, A_1),(s_1, A_1),(s_2, A_1),(s_3, A_0)}$ is adequate, therefore it follows that LOOP has a computation that satisfies $\p \colon \msquare\Diamond(x = 3)$, \ie, $\p$ is P-satisfiable. Combined with the previous example, where $\neg\p$ has no adequate subgraph and is therefore \emph{not} P-satisfiable, this also shows that $\p$ is P-valid.
 \end{example*}
 
 Justice holds for supergraphs\footnote{bigger graphs, opposite of subgraph}, which implies that if a graph it's not just, then all its subgraphs will be also not just.
