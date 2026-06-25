@@ -2639,7 +2639,7 @@ The structure is almost the same of LTL, but the key difference stands in the la
 
 In CTL, $\XX$ (\quoted{next}) and $\UU$ (\quoted{until}) are \textbf{temporal operators}: they build a \emph{path formula} out of state formulas. The \textbf{path quantifiers} $\AA$ (\quoted{for all futures}) and $\EE$ (\quoted{there exists a future}) then turn a path formula back into a \emph{state formula} by quantifying over the paths leaving a state.
 Moreover, in this language, it's forced that path quantifiers have to be interleaved with a state quantifier, and the root of the formula tree must start with a CTL operator.
-This allows model checking to be computed in polynomial time at the expenses of losing expressiveness (we don't lose in fairness).
+This allows model checking to be computed in polynomial time at the expense of losing expressiveness (in particular, as discussed below, CTL cannot express some fairness properties, although CTL model checking stays polynomial even when fairness constraints are imposed).
 
 The CTL syntax is:
 \begin{itemize}
