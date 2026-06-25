@@ -933,7 +933,7 @@ Equivalence of finite index means ``with a finite number of classes''.
 \begin{definition}[Saturation]\label{def:saturation}
   A congruence $\sim$ \textbf{saturates} an \wlan $L \subseteq \Aw$ if, for all pairs of $\sim$-classes $U \andt V$, we have that
   \begin{equation*}
-    U V^\w \cap L \neq 0 \quad \implies \quad U V^\w \subseteq L
+    U V^\w \cap L \neq \emptyset \quad \implies \quad U V^\w \subseteq L
   \end{equation*}
   \ie, if there exist at least an \wword with the pattern $U V^\w$, then all the words of that form belong to the language $L$.
 
@@ -943,10 +943,10 @@ Equivalence of finite index means ``with a finite number of classes''.
 
 \begin{proof*}[\nameref{def:saturation}]
   By contradiction, let us assume $\sim$ doesn't saturate $\ol{L}$.
-  This implies that there exists $U, V$ $\sim$-classes \st $U V^\w \cap \ol{L} \neq 0$, but $U V^\w \nsubseteq \ol{L}$.
+  This implies that there exists $U, V$ $\sim$-classes \st $U V^\w \cap \ol{L} \neq \emptyset$, but $U V^\w \nsubseteq \ol{L}$.
   Hence, there exists $\a \in U V^\w$ \st $\a \in L$.
 
-  By hypothesis, since $\sim$ saturates $L$, by definition we have that $U V^\w \cap L \neq 0$ which follows that $U V^\w \subseteq L$, and this is a contradiction.
+  By hypothesis, since $\sim$ saturates $L$, by definition we have that $U V^\w \cap L \neq \emptyset$ which follows that $U V^\w \subseteq L$, and this is a contradiction.
 \end{proof*}
 
 The saturation property partitions words of the pattern $U V^\w$ into classes of the congruence.
