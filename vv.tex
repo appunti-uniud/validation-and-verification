@@ -1384,8 +1384,8 @@ Why single out a class obtained by \emph{removing} an operator? Because star-fre
   A language $W \subseteq A^*$ is \textbf{star-free} iff it's first-order definable in \SA with the ordering relation $<$.
 \end{theorem}
 
-While the successor function $+1$ is definable in terms of $<$, the opposite it's not, \ie, the relation $<$ is only second-order definable in terms of $+1$.
-Therefore, \SA with the ordering relation $<$ is strictly more expressive than with the successor function $+1$.
+While the successor function $+1$ is definable in terms of $<$, the opposite is not at the first-order level, \ie, the relation $<$ is only \emph{second-order} definable in terms of $+1$.
+Therefore, the \emph{first-order} fragment with the ordering relation $<$ (\ie, $FO[<]$) is strictly more expressive than the one with only the successor function $+1$ ($FO[+1]$) -- which is precisely the gap relevant to star-free languages here. In full \SA, by contrast, $<$ and $+1$ are second-order interdefinable (see the redefinition of $<$ from $+1$ later in the S1S section), so there the two are equally expressive.
 
 \begin{definition*}[$n$-equivalence]
   The equivalence relation $\eqn$ over $A^*$ is defined for all $u,v \in A^*$, \st
