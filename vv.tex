@@ -2369,7 +2369,7 @@ This constraint can be express in LTL with the following expression:
 \end{equation*}
 or more simply $GF(\text{enabled}) \to GF(\text{taken})$, \ie, if a transition is enabled infinitely many times, then it must also be taken infinitely many times.
 \begin{note}
-  Notice that $GF(\text{enabled} \to \text{taken})$ is not equal to the above, because requires the transition to be taken at the same time it's enabled, which is a much stricter requirement.
+  Notice that $GF(\text{enabled} \to \text{taken})$ is not equal to the above: it is in fact strictly \emph{weaker} (it holds whenever the transition is infinitely often \emph{disabled}). The strictly stronger property is $G(\text{enabled} \to \text{taken})$, requiring the transition to be taken in every step in which it is enabled.
 \end{note}
 
 \bigskip
