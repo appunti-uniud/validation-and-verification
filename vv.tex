@@ -3356,6 +3356,10 @@ The encoding rules are the following:
   \item $\kloop{\p}^{k+1} = \bot$ (the successor $k+1$ doesn't exist, because of the loop)
 \end{itemize}
 
+\begin{note}
+  In the lasso case the successor $\succ(i)$ wraps around the loop, so the $\UU$ and $\FF$ equations are circular over the loop positions $l,\dots,k$ (the base case $\kloop{\p}^{k+1}=\bot$ is reached only in the loop-free case). They must therefore be read as \emph{least} fixpoints (and $\GG$/$\RRR$ as greatest ones); otherwise the all-true solution would spuriously satisfy, \eg, $\kloopil{\FF\p}$ on a loop where $\p$ never holds.
+\end{note}
+
 For loop-free Kripke structures of length $k$ with $i \leq k$, it's the same, but with the successor function simply replaced by $i+1$.
 
 \begin{definition*}[Overall encoding]
