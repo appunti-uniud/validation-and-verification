@@ -1,0 +1,10 @@
+\begin{tikzpicture}[->,>=Stealth,auto,every state/.style={minimum size=2.1em}]
+  \node[state,initial,initial text=] (q0) {$q_0$};
+  \node[state,accepting,right=3.4cm of q0] (q1) {$q_1$};
+  \path (q0) edge[loop above] node {$b$} (q0)
+        (q0) edge[bend left] node {$a$} (q1)
+        (q1) edge[loop above] node {$a$} (q1)
+        (q1) edge[bend left] node {$b$} (q0);
+  \node[below=1.1cm of q0,xshift=1.7cm,align=center]
+    {\footnotesize infinitely many $a$ \;($GF\,a$): a DBA};
+\end{tikzpicture}

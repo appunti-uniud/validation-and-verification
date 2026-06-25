@@ -1,0 +1,9 @@
+\begin{tikzpicture}[->,>=Stealth,auto,every state/.style={minimum size=2.1em}]
+  \node[state,initial,initial text=] (q0) {$q_0$};
+  \node[state,accepting,right=3.4cm of q0] (q1) {$q_1$};
+  \path (q0) edge[loop above] node {$a,b$} (q0)
+        (q0) edge node {$b$} (q1)
+        (q1) edge[loop above] node {$b$} (q1);
+  \node[below=1.1cm of q0,xshift=1.7cm,align=center]
+    {\footnotesize finitely many $a$ \;($FG\,\neg a$): needs nondeterminism};
+\end{tikzpicture}

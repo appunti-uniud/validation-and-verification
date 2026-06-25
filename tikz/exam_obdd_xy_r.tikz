@@ -1,0 +1,12 @@
+\begin{tikzpicture}
+  \node[bvar]  (x)  at (2,4)    {$x$};
+  \node[bvar]  (ya) at (0.7,2.6){$y$};
+  \node[bvar]  (yb) at (3.3,2.6){$y$};
+  \node[bvar]  (R)  at (2,1.2)  {$R$};
+  \node[bleaf] (l0) at (0,0)    {$0$};
+  \node[bleaf] (l1) at (4,0)    {$1$};
+  \draw[blow]  (x)  -- (ya);  \draw[bhigh] (x)  -- (yb);
+  \draw[bhigh] (ya) -- (l0);  \draw[blow]  (ya) -- (R);
+  \draw[blow]  (yb) -- (l0);  \draw[bhigh] (yb) -- (R);
+  \draw[blow]  (R)  -- (l0);  \draw[bhigh] (R)  -- (l1);
+\end{tikzpicture}

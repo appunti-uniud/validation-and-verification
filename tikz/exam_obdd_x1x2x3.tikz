@@ -1,0 +1,12 @@
+\begin{tikzpicture}
+  \node[bvar]  (x1) at (2,4)     {$x_1$};
+  \node[bvar]  (xa) at (0.7,2.6) {$x_2$};
+  \node[bvar]  (xb) at (3.3,2.6) {$x_2$};
+  \node[bvar]  (x3) at (2,1.2)   {$x_3$};
+  \node[bleaf] (l0) at (0,0)     {$0$};
+  \node[bleaf] (l1) at (4,0)     {$1$};
+  \draw[blow]  (x1) -- (xa);  \draw[bhigh] (x1) -- (xb);
+  \draw[blow]  (xa) -- (l1);  \draw[bhigh] (xa) -- (x3);
+  \draw[blow]  (xb) -- (x3);  \draw[bhigh] (xb) -- (l1);
+  \draw[blow]  (x3) -- (l0);  \draw[bhigh] (x3) -- (l1);
+\end{tikzpicture}

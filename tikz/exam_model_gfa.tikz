@@ -1,0 +1,12 @@
+\begin{tikzpicture}[->,>=Stealth,auto,every state/.style={minimum size=2.1em}]
+  \node[state,initial,initial text=] (q0) {$q_0$};
+  \node[state,right=3cm of q0] (q1) {$q_1$};
+  \node[state,below=2.4cm of q1,label={below right:$a$}] (q3) {$q_3$};
+  \node[state,below=2.4cm of q0] (q2) {$q_2$};
+  \path (q0) edge (q1)
+        (q1) edge[loop above] (q1)
+        (q1) edge (q2)
+        (q2) edge[loop below] (q2)
+        (q2) edge (q3)
+        (q3) edge (q0);
+\end{tikzpicture}

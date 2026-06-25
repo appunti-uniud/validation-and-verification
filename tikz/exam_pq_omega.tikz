@@ -1,0 +1,6 @@
+\begin{tikzpicture}[->,>=Stealth,auto,every state/.style={minimum size=2.1em}]
+  \node[state,initial,accepting,initial text=] (q0) {$q_0$};
+  \node[state,right=3.4cm of q0] (q1) {$q_1$};
+  \path (q0) edge[bend left] node {$p$} (q1)
+        (q1) edge[bend left] node {$q$} (q0);
+\end{tikzpicture}

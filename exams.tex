@@ -3,6 +3,17 @@
 \documentclass[oneside]{academica}
 \input{preamble}
 
+% --- styles for the diagrams reconstructed from the exam scribbles ---
+\usetikzlibrary{arrows.meta,automata,positioning,calc}
+\tikzset{
+  bvar/.style ={circle,draw,minimum size=2.2em,inner sep=0pt},
+  bleaf/.style={rectangle,draw,minimum size=1.9em,inner sep=2pt},
+  blow/.style ={dashed,-{Stealth[]}},   % low  / 0 edge
+  bhigh/.style={-{Stealth[]}},          % high / 1 edge
+}
+\newcommand{\bddlegend}{\par\smallskip{\footnotesize\itshape
+  (dashed edge $=$ the $0$/low branch, solid edge $=$ the $1$/high branch)}}
+
 \overtitle{oral exam questions for}
 \title{Verification and Validation}
 \author{Transcribed from handwritten notes}
@@ -143,6 +154,16 @@ $\w$-regular ($\Leftarrow$).\quad\textbf{Grade:} $30L$.
     automaton.
 \end{enumerate}
 
+\noindent The model drawn for Q2 (the lecture model-checking example): a
+$4$-cycle with self-loops, $q_0$ initial and $a$ holding in $q_3$. The
+automaton drawn for Q5 (to be complemented) is on the right.
+
+\begin{center}
+\input{tikz/exam_model_gfa.tikz}
+\qquad\qquad
+\input{tikz/exam_complement_inf_a.tikz}
+\end{center}
+
 %----------------------------------------------------------------------
 \section{Exam 3 --- Overview of all the automaton types}
 %----------------------------------------------------------------------
@@ -190,6 +211,12 @@ finite index, partitions [it]}.\quad\textbf{Grade:} not recorded.
     $(pq)^{\w}$. [The scribble writes $(pq)^*$; for an
     $\w$-automaton the intended language is the infinite word $(pq)^{\w}$.]
 \end{enumerate}
+
+\noindent A two-state BA for $(pq)^{\w}$ (treating $p,q$ as alphabet
+symbols), with $q_0$ both initial and accepting:
+\begin{center}
+\input{tikz/exam_pq_omega.tikz}
+\end{center}
 
 %----------------------------------------------------------------------
 \section{Exam 6 --- LTL}
@@ -462,6 +489,12 @@ which only $b$ is allowed forever; $F=\set{q_1}$.
 Failing to produce the BA for \quoted{finitely many $a$} is exactly what
 sank Q5 in Exam~6: the trap is to try to do it deterministically.
 
+\begin{center}
+\input{tikz/exam_inf_many_a.tikz}
+\qquad\qquad
+\input{tikz/exam_fin_many_a.tikz}
+\end{center}
+
 \subsection{Acceptance condition; the meaning of \texorpdfstring{$GF$}{GF} and \texorpdfstring{$FG$}{FG}}
 \emph{Asked in Exams 2, 4, 6.}
 
@@ -495,10 +528,11 @@ left concatenation with a regular set, and $\w$-iteration.
 Take the two BA on disjoint state sets. Unlike for NFAs, you \emph{cannot}
 just add a fresh initial state with $\e$-moves to the two old initial
 states (Büchi automata as defined here have no $\e$-transitions). The
-clean fix is a nondeterministic initial choice: duplicate the outgoing
-transitions of both old initial states onto a single new initial state
-(and keep it final if either old one was). This is the very point the
-examiner stressed in Exam~6, Q4.
+clean fix is a nondeterministic initial choice: keep both automata and
+add one fresh initial state (with no incoming edges) carrying the union
+of the two old initial states' outgoing moves; the accepting set stays
+$F_1\cup F_2$. This is the very point the examiner stressed in Exam~6,
+Q4.
 
 \paragraph{Intersection (Exam 11).}
 A simple product is not enough, because the two automata may visit their
@@ -727,11 +761,14 @@ finitely often. Compassion implies justice, not conversely.
 
 \paragraph{In LTL (Exams 9 Q3, 13 Q5).}
 \[
-  \text{justice:}\quad GF(\mathit{enabled})\;\text{eventually settled}\;
-  \rightarrow GF(\mathit{taken}),\qquad
-  \text{compassion:}\quad GF(\mathit{enabled})\rightarrow GF(\mathit{taken}).
+  \text{justice (weak):}\quad FG(\mathit{enabled})\rightarrow GF(\mathit{taken}),
+  \qquad
+  \text{compassion (strong):}\quad GF(\mathit{enabled})\rightarrow GF(\mathit{taken}).
 \]
-More precisely justice is $\neg F\big(G(\mathit{enabled})\wedge
+The only difference is $FG$ vs.\ $GF$ in the antecedent: justice asks
+only about transitions that are \emph{eventually permanently} enabled,
+compassion about those enabled \emph{infinitely often}. Equivalently (the
+negation forms used in the notes) justice is $\neg F\big(G(\mathit{enabled})\wedge
 G(\neg\mathit{taken})\big)$ and compassion is
 $\neg\big(GF(\mathit{enabled})\wedge FG(\neg\mathit{taken})\big)$. Note
 $GF(\mathit{enabled}\rightarrow\mathit{taken})$ is \emph{not} the same ---
@@ -810,6 +847,35 @@ clean up --- is exactly this reduction process.
     equals $x_3$. So the \quoted{$x_1=x_2$} paths go to $1$ and the
     \quoted{$x_1\neq x_2$} paths go to an $x_3$-node.
 \end{itemize}
+
+\subsection{The reduced OBDDs, drawn}
+
+\paragraph{$(x\leftrightarrow y)\wedge R$ (Exam 1, Q5), order $x,y,R$.}
+The two ``$y$ matches $x$'' branches feed a single shared $R$-node;
+$R{=}1$ is the only way to reach the $1$-leaf.
+\begin{center}
+\input{tikz/exam_obdd_xy_r.tikz}
+\bddlegend
+\end{center}
+
+\paragraph{$(x_1\leftrightarrow x_2)\wedge x_1$ (Exam 12, Q4), order $x_1,x_2$.}
+The full binary decision tree (left) reduces --- merge the three equal
+$0$-leaves, drop the redundant left $x_2$-node --- to the OBDD of
+$x_1\wedge x_2$ (right):
+\begin{center}
+\input{tikz/exam_obdd_x1x2x1_tree.tikz}
+\qquad\raisebox{1.1cm}{$\rightsquigarrow$}\qquad
+\input{tikz/exam_obdd_x1x2x1_reduced.tikz}
+\bddlegend
+\end{center}
+
+\paragraph{$(x_1\leftrightarrow x_2)\vee x_3$ (Exam 8, Q4), order $x_1,x_2,x_3$.}
+When $x_1=x_2$ the answer is $1$ regardless of $x_3$; otherwise it is
+$x_3$ (truth table $1,1,0,1,0,1,1,1$).
+\begin{center}
+\input{tikz/exam_obdd_x1x2x3.tikz}
+\bddlegend
+\end{center}
 
 \subsection{Complexity (Exam 1, Q6)}
 In the worst case an OBDD is \textbf{exponential} in the number of
