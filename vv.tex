@@ -173,6 +173,8 @@ It's based on:
     &= (z \lor \neg r \lor \neg q) \land (\neg z \lor \a) \land (\neg z \lor \beta)
   \end{align*}
   Note that the resulting CNF is over the \emph{extended} variable set $\set{p,q,r,z}$: it is equi-satisfiable with the original formula over $\set{p,q,r}$, but \emph{not} logically equivalent to it, because the fresh variable $z$ changes the set of models. Equi-satisfiability is all we need, since the goal is to preserve satisfiability, not meaning.
+
+  Note also that only the implication $z \to (\a \land \beta)$ is added, not the full biconditional $z \leftrightarrow (\a \land \beta)$. This single direction suffices to preserve satisfiability precisely because $\p$ is in NNF, so the replaced subformula $\a \land \beta$ occurs with \emph{positive} polarity (the Plaisted--Greenbaum optimization). For a subformula occurring under a negation, the converse implication would be required instead.
 \end{proof*}
 
 CNF satisfiability is NP-Complete.
