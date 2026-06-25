@@ -2451,7 +2451,7 @@ We can distinguish between two types of formulas:
 \begin{definition}[$\p$-atom]\label{def:p_atom}
   An atom $A$ over $\p$ and is a set of sub-formulas of $\phi_\p$, that satisfies the following conditions:
   \begin{itemize}
-    \item the conjunction of the sub-formulas in the atom is satisfiable, \ie, at least one of the sub-formulas is \true;
+    \item the conjunction of the sub-formulas in the atom is satisfiable, \ie, all of them can hold simultaneously at one position of some model (the set is mutually consistent);
     \item each atom can contain only a sub-formula $p$ or it's negation $\neg p$, not both, \ie, $p$ and $\neg p$ must belong to different atoms;
     \item lastly, if an atom has an $\a$ formula, all its sub-formulas must be in the atom, while for $\b$ formulas, its necessary that at least one of its sub-formulas belongs to the atom.
   \end{itemize}
