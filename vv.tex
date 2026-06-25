@@ -1539,7 +1539,7 @@ The triple $\tuplev{V, \theta, \T}$ is enough to define a classic transition sys
 Moreover, strong fairness implies weak fairness, but not vice versa, and fairness it is not checkable in a ``finite'' way, \ie, by analyzing a finite prefix of a computation.
 
 Each transition $\t \in \T$ can be represented by a formula of FO logic $\rho_\t(V,V')$ called \textbf{transition relation}, which expresses the relationship between a state $s$ and its \tsuc $s'$.
-In fact, a state $s'$ is a successor of $s$ via $\t$ if $\rho_\t(V,V')$ evaluates to \true, \ie, $\forall x \in V \; s[x] = \true$.
+In fact, a state $s'$ is a successor of $s$ via $\t$ if $\rho_\t(V,V')$ evaluates to \true\ under the assignment interpreting the (unprimed) variables $V$ by $s$ and the primed variables $V'$ by $s'$, \ie, $\tuple{s,s'} \models \rho_\t(V,V')$.
 
 There exists also a special transition called \textbf{idling transition} and denoted with $\t_I$, which does nothing and doesn't require any fairness condition, and is used to make finite computations infinite, because $\t_I$ is always enabled.
 At the same time, to explicitly differentiate transition types, all transitions that are different from $\t_I$ are called \textbf{diligent transitions}.
