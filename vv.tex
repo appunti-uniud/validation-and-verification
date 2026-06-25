@@ -1705,7 +1705,7 @@ Some elements of \SA are redundant:
 \end{example*}
 
 It's possible to generalize the \SA definition, removing the dependency between each $Q_{\_}$ to a specific symbol of the alphabet $A$ (\eg, $a,b,c,\ldots$).
-To do so, we just need to change the representation of the symbols of our alphabet $A$ to $\set{0,1}^n$, where $n = \log_2 \abs{A}$.
+To do so, we just need to change the representation of the symbols of our alphabet $A$ to $\set{0,1}^n$, where $n = \lceil \log_2 \abs{A} \rceil$.
 With this notation we can encode each symbol of $A$ to a string of $0$s and $1$s (binary value), and therefore represent each symbol concurrently.
 In this way, we don't need to specify the formalism for each alphabet $A$, but we have now a general representation that is sufficient to express every possible alphabet.
 The generalized version of \SA is simply denoted with S1S.
