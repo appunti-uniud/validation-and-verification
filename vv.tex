@@ -3659,7 +3659,7 @@ Two learning scenarios are possible:
     \begin{itemize}
       \item \emph{membership} query: used to check if a word $w$ belongs to $L_0$, where the teacher just answers \texttt{yes} or \texttt{no};
       \item \emph{equivalence} query: check if the language $L$ that we're learning is equal to teacher's language $L_0$.
-        Here, the teacher answers with a counter example (contradiction) of a word $w$ that belongs to $L$ but not to $L_0$, to prove that they're not equal.
+        Here, the teacher answers with a counter example: a word $w$ in the symmetric difference of $L$ and $L_0$ (accepted by one but not by the other), proving that they're not equal.
         Otherwise, he simply answers \texttt{yes} and the game ends.
     \end{itemize}
     Pay attention that, in order to answer to the first type, the teacher only needs to run $\A_0$ on the word $w$ requested, while the second query is not trivial because the teacher must check for equivalence between its automaton $\A_0$ and the automaton provided by the learner.
