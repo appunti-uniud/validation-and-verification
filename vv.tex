@@ -2623,8 +2623,8 @@ Then we can check for the emptiness of $\A_\p$, which means that if $\L(\A_\p) =
 A CTL model $M$ (a Kripke structure) is a triple $(S,R,L)$ where:
 \begin{itemize}
   \item $S$ is the set of states;
-  \item $R$ is the set of binary relations between states;
-  \item $L$ is the set of propositional letters that holds for each state.
+  \item $R \subseteq S \times S$ is the (binary) transition relation between states;
+  \item $L: S \to 2^{\AP}$ assigns to each state the set of propositional letters that hold in it.
 \end{itemize}
 The structure is almost the same of LTL, but the key difference stands in the language used, which allow the concurrent evaluation of multiple branches.
 
@@ -2634,7 +2634,7 @@ The structure is almost the same of LTL, but the key difference stands in the la
     \item $S = \set{q_0,q_1,q_2}$
     \item $R = \set{(q_0,q_0),(q_0,q_1),(q_1,q_2),(q_2,q_2)}$
     \item $L(q_0) = \set{p}$
-    \item $L(q_1) = \set{\neg p}$
+    \item $L(q_1) = \emptyset$
   \end{itemize}
 \end{example*}
 
